@@ -1,20 +1,20 @@
 import wollok.game.*
 
-import juego.pepita
+import juego.jacinta
 
 object config {
 
 	method configurarEscenario() {
-		game.title("Pepita")
+		game.title("JacintaGame")
 		game.height(10)
 		game.width(10)
 	}
 }
-program PepitaGame {
+program JacintaGame {
 
 	config.configurarEscenario()
 	
-	game.addVisualCharacter(pepita)
+	game.addVisualCharacter(jacinta)
 
 	game.start()
 }
