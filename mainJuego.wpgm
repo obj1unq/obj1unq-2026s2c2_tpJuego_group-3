@@ -1,19 +1,10 @@
 import wollok.game.*
+import personaje.*
+import configuraciones.*
 
-import juego.jacinta
-
-object config {
-
-	method configurarEscenario() {
-		game.title("JacintaGame")
-		game.height(10)
-		game.width(10)
-	}
-}
-program JacintaGame {
-
+program Jacinta {
 	config.configurarEscenario()
-	
+
 	game.addVisualCharacter(jacinta)
 
 	game.start()

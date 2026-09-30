@@ -1,15 +1,15 @@
-import juego.jacinta
-import mainJuego.config
+import mainJuego.*
+import personaje.*
+import configuraciones.*
 
-describe "group of tests for pepita" {
+describe "group of tests for jacinta" {
 
   method initialize() {
     config.configurarEscenario()
   }
 
   test "jacinta tiene posicion e imagen" {
-    assert.equals(game.at(5,5), jacinta.position())
-    assert.equals("pepita.png", jacinta.image())
+    assert.equals(game.at(25,25), jacinta.position())
+    assert.equals("jacinta.png", jacinta.image())
   }
-
 }
