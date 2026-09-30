@@ -6,5 +6,4 @@ object jacinta {
   method image() {
     return "jacinta.png"
   }
-
 }
