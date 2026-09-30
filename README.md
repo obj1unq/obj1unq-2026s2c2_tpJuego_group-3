@@ -16,11 +16,18 @@ Hay una meta de entrada/salida.
 
 ## Reglas de Juego / Instrucciones
 ### Teclas:
+- flecha ↑: mover hacía arriba.
+- flecha ↓: mover hacía abajo.
+- flecha ←: mover hacía la izquierda.
+- flecha →: mover hacía la derecha.
+
 - b: buscar ingrediente en el pastizal.
 - t: toma mate y recarga vida.
 
+- f: usar facón ?
+
 ### Primer nivel:
-Jacinta tiene que recorrer el campo buscando los ingredientes necesarios para cocinar el locro. Sin embargo, debe tener cuidado: una yarará** se encuentra entre los pastizales.
+Jacinta tiene que recorrer el campo buscando los ingredientes necesarios para cocinar el locro. Sin embargo, debe tener cuidado: una yarará se encuentra entre los pastizales.
 
 ### Objetos con los que el personaje colisiona:
 - Pastizal: surgen tres situaciones random:
@@ -31,15 +38,17 @@ Jacinta tiene que recorrer el campo buscando los ingredientes necesarios para co
 - Yarará[^2] (enemiga): se camufla entre los pastizales, es venenosa por lo que al colisionar con Jacinta le resta vida (otro efecto posible: emite una advertencia o la empuja un casillero hacia atrás).
 
 ### Segundo nivel:
+Jacinta tiene que vencer al lobizón y esquivar al pampero para llegar al pueblo.
 
 ### Objetos con los que el personaje colisiona:
-- Lobizón (enemigo): .
-- Pampero[^3] (obstáculo): al colisionar con Jacinta hace que se maree y se inviertan temporalmente los controles de movimiento (la tecla de arriba va hacia abajo y viceversa, la tecla izquierda va hacia derecha y viceversa).
+- Lobizón[^3] (enemigo): al colisionar con Jacinta le resta una cantidad considerable de vida. (esta situación requiere un método ya sea de combate o ahuyento por ej. jacinta puede usar un facón para defenserse).
+- Pampero[^4] (obstáculo): al colisionar con Jacinta hace que se maree y se inviertan temporalmente los controles de movimiento (la tecla de arriba va hacia abajo y viceversa, la tecla izquierda va hacia derecha y viceversa).
 
 ### Tercer nivel:
+Jacinta tiene que atravesar la pista de baile esquivando a las parejas que bailan chacarera. Tiene que llegar hasta la cocina para llevar el locro. Si consigue llegar, gana.
 
 ### Objetos con los que el personaje colisiona:
-- Parejas de baile (obstáculo): .
+- Parejas de baile (obstáculo): se mueven en patrones fijos (ver como hacemos para que simule el ritmo de baile). Si colisionan con ella, le hacen tirar parte del locro (o quizas es mejor que la demoren haciéndola retroceder).
 
 ## Otros
 - Programación con Objetos I - Universidad Nacional de Quilmes
@@ -52,4 +61,6 @@ Jacinta tiene que recorrer el campo buscando los ingredientes necesarios para co
 
 [^2]: la yarará es una especie de serpiente endémica de Argentina.
 
-[^3]: el pampero es una ráfaga de viento helado.
+[^3]: figura mítica del folklore argentino, vaga por los campos y cementerios, asustando a los perros y alimentándose de carroña.
+
+[^4]: el pampero es una ráfaga de viento helado.
