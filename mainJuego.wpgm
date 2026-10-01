@@ -1,11 +1,13 @@
 import wollok.game.*
 import personaje.*
 import configuraciones.*
+import direcciones.*
 
 program Jacinta {
 	config.configurarEscenario()
-
-	game.addVisualCharacter(jacinta)
+	config.movimientos()
+	
+	game.addVisual(jacinta)
 
 	game.start()
 }
