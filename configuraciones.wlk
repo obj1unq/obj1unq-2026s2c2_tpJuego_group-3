@@ -6,8 +6,8 @@ import inventario.*
 object config {
 	method configurarEscenario() {
 		game.title("Jacinta")
-		game.height(50)
-		game.width(50)
+		game.height(26)
+		game.width(26)
 	}
 
 	method movimientos() {
@@ -15,6 +15,7 @@ object config {
 		keyboard.right().onPressDo( { jacinta.mover(derecha) } )
 		keyboard.up().onPressDo( { jacinta.mover(arriba) } )
 		keyboard.down().onPressDo( { jacinta.mover(abajo) } )
+		//keyboard.().onPressDo( { jacinta.inspeccionar() } )
 	}
 
 	method inventario() {
