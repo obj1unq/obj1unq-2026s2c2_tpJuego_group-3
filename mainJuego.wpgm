@@ -1,3 +1,4 @@
+import inventario.*
 import wollok.game.*
 import personaje.*
 import configuraciones.*
@@ -10,12 +11,13 @@ import niveles.*
 program Jacinta {
 	config.configurarEscenario()
 	config.movimientos()
+	config.inventario()
 
 	game.addVisual(nivel1)
 
 	factoryArbustos.crear()
 
 	game.addVisual(jacinta)
-
+	
 	game.start()
 }

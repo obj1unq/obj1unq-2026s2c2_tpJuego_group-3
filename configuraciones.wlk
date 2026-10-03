@@ -1,6 +1,7 @@
 import wollok.game.*
 import personaje.*
 import direcciones.*
+import inventario.*
 
 object config {
 	method configurarEscenario() {
@@ -15,6 +16,11 @@ object config {
 		keyboard.up().onPressDo( { jacinta.mover(arriba) } )
 		keyboard.down().onPressDo( { jacinta.mover(abajo) } )
 		//keyboard.().onPressDo( { jacinta.inspeccionar() } )
+	}
+
+	method inventario() {
+		const slot1 = new Inventario(position = game.at(1, 12), numeroDeSlot = 0, personaje = jacinta)
+		game.addVisual(slot1)
 	}
 }
  	
