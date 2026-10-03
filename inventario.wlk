@@ -7,9 +7,9 @@ class Inventario {
     method image() {
         return "slot-" + if(personaje.ingredientes().size() > numeroDeSlot){ 
             const ingrediente = personaje.ingredientes().get(numeroDeSlot)
-            "con-" + ingrediente.image()
+            "con-" + ingrediente.nombre() + ".png"
         } else {
-            "vacio.png"
+            "slot-vacio.png"
         }
             
     }
