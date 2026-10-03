@@ -2,11 +2,19 @@ import wollok.game.*
 import personaje.*
 import configuraciones.*
 import direcciones.*
+import obstaculos.*
+import factory.*
+import enemigos.*
+import niveles.*
 
 program Jacinta {
 	config.configurarEscenario()
 	config.movimientos()
-	
+
+	game.addVisual(nivel1)
+
+	factoryArbustos.crear()
+
 	game.addVisual(jacinta)
 
 	game.start()
