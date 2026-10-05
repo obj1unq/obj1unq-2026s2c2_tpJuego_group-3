@@ -1,14 +1,35 @@
-import juego.pepita
-import mainJuego.config
+import ingredientes.*
+import mainJuego.*
+import personaje.*
+import configuraciones.*
+import inventario.*
 
-describe "group of tests for pepita" {
+describe "group of tests for jacinta" {
 
   method initialize() {
     config.configurarEscenario()
   }
-  test "pepita tiene posicion e imagen" {
-    assert.equals(game.at(5,5), pepita.position())
-    assert.equals("pepita.png", pepita.image())
-  }
 
+  test "jacinta tiene posicion e imagen" {
+    assert.equals(game.at(25,25), jacinta.position())
+    assert.equals("jacinta.png", jacinta.image())
+  }
+}
+
+describe "Estado del inventario en demo" {
+  method initialize() {
+    config.configurarEscenario()
+    config.inventario()
+    
+  }
+  test "jacinta encuentra una calabaza" {
+    const slot1 = new Inventario(position = game.at(1, 12), numeroDeSlot = 0, personaje = jacinta)
+
+    assert.equals(0, jacinta.ingredientes().size())   //Jacinta no tiene ingredientes al inicio
+
+    jacinta.ingredientes().add(calabaza) //Se encuentra una calabaza y lo guarda
+
+    assert.equals(1, jacinta.ingredientes().size())  //Jacinta ahora tiene exactamente un ingrediente
+    assert.equals("slot-con-calabaza.png", slot1.image()) //Este ingrediente se ve en el slot del inventario
+  }
 }
