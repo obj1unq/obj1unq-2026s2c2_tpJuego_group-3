@@ -1,20 +1,18 @@
 import wollok.game.*
+import direcciones.*
+import obstaculos.*
 import morral.*
 import mate.*
 
-
-
 object jacinta {
-  var property position = game.center()
+  var property position = game.origin()
+  var property ingredientes = [] //temporal, esto puede ser el morral, avisar así modifico el código del inventario
 
   var property vida = 3        // check
-
-
 
   method image() {
     return "jacinta.png"
   }
-
 
   method ingredientes() {
         return morral.ingredientes()
@@ -45,7 +43,11 @@ object jacinta {
   }
 }
 
+  method mover(dirección) {
+    position = dirección.siguiente(position)
+  }
 
-
-
-
+  //method inspeccionar() {
+  //  return 
+  //}
+}
