@@ -15,7 +15,8 @@ object config {
 		keyboard.right().onPressDo( { jacinta.mover(derecha) } )
 		keyboard.up().onPressDo( { jacinta.mover(arriba) } )
 		keyboard.down().onPressDo( { jacinta.mover(abajo) } )
-    	keyboard.t().onPressDo( { jacinta.tomarMate() } )     
+    	keyboard.t().onPressDo( { jacinta.tomarMate() } )    
+		 
 		//keyboard.().onPressDo( { jacinta.inspeccionar() } )
 	}
 
