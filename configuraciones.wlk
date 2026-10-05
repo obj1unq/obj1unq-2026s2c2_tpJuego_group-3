@@ -22,5 +22,10 @@ object config {
 		const slot1 = new Inventario(position = game.at(1, 12), numeroDeSlot = 0, personaje = jacinta)
 		game.addVisual(slot1)
 	}
+
+	method inventario() {
+		const slot1 = new Inventario(position = game.at(1, 12), numeroDeSlot = 0, personaje = jacinta)
+		game.addVisual(slot1)
+	}
 }
  	
