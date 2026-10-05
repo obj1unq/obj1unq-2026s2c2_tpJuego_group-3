@@ -35,19 +35,19 @@ object jacinta {
     mate.usar()
   }
 
-
   method validarTomarMate(){                // si el mate ya se uso tira error, o mejor que no haga nada?
     if (not mate.puedeUsarse()){
       self.error("no hay más vidas disponibles")
     }
   }
-}
 
   method mover(dirección) {
     position = dirección.siguiente(position)
   }
 
+}
+
   //method inspeccionar() {
   //  return 
   //}
-}
+
