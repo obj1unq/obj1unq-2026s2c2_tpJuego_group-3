@@ -8,13 +8,13 @@ object config {
 		game.title("Jacinta")
 		game.height(26)
 		game.width(26)
-	}
 
 	method movimientos() {
 		keyboard.left().onPressDo( { jacinta.mover(izquierda) } )
 		keyboard.right().onPressDo( { jacinta.mover(derecha) } )
 		keyboard.up().onPressDo( { jacinta.mover(arriba) } )
 		keyboard.down().onPressDo( { jacinta.mover(abajo) } )
+    keyboard.t().onPressDo( { jacinta.tomarMate() } )     
 		//keyboard.().onPressDo( { jacinta.inspeccionar() } )
 	}
 
