@@ -8,6 +8,7 @@ object config {
 		game.title("Jacinta")
 		game.height(26)
 		game.width(26)
+		game.cellSize(50)
 	}
 
 	method movimientos() {
@@ -20,8 +21,12 @@ object config {
 	}
 
 	method inventario() {
-		const slot1 = new Inventario(position = game.at(1, 12), numeroDeSlot = 0, personaje = jacinta)
+		const slot1 = new Inventario(position = game.at(1, game.height()-1), numeroDeSlot = 0, personaje = jacinta)
+		const slot2 = new Inventario(position = game.at(2, game.height()-1), numeroDeSlot = 1, personaje = jacinta)
+		const slot3 = new Inventario(position = game.at(3, game.height()-1), numeroDeSlot = 2, personaje = jacinta)
 		game.addVisual(slot1)
+		game.addVisual(slot2)
+		game.addVisual(slot3)
 	}
 }
 
