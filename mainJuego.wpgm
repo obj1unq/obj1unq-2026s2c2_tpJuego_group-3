@@ -7,6 +7,10 @@ import obstaculos.*
 import factory.*
 import enemigos.*
 import niveles.*
+import mate.*
+import vidas.*
+import morral.*
+
 
 program Jacinta {
 	config.configurarEscenario()
@@ -18,6 +22,12 @@ program Jacinta {
 	factoryArbustos.crear()
 
 	game.addVisual(jacinta)
+
+	game.addVisual(mate)
+
+	vidas.actualizar(jacinta.vida())
+
+	game.addVisual(morral)
 	
 	game.start()
 }
