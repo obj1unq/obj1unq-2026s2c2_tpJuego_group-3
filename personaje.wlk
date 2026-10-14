@@ -57,7 +57,7 @@ object jacinta {
   }
 
   method hayArbustoEn(posicion) {
-    return not self.arbustoEn(posicion).isEmpty() // creo que esto es lo que no me lee el juego 
+    return not self.arbustosEn(posicion).isEmpty() // creo que esto es lo que no me lee el juego 
   }
 
   method arbustoEn(posicion) {
@@ -65,7 +65,7 @@ object jacinta {
   }
 
   method arbustosEn(posicion) {
-    return game.getObjectsIn(position).filter( { elemento => self.esArbustoVálidoParaBuscar(elemento) } )
+    return game.getObjectsIn(posicion).filter( { elemento => self.esArbustoVálidoParaBuscar(elemento) } )
   }
 
   method esArbustoVálidoParaBuscar(elemento) {
@@ -77,5 +77,6 @@ object jacinta {
       arbusto.serInspeccionado()
       arbusto.contenido().interactuarCon(self)
   }
+
 
 }
