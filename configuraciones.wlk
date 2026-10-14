@@ -16,7 +16,7 @@ object config {
 		keyboard.up().onPressDo( { jacinta.mover(arriba) } )
 		keyboard.down().onPressDo( { jacinta.mover(abajo) } )
     	keyboard.t().onPressDo( { jacinta.tomarMate() } )     
-		//keyboard.().onPressDo( { jacinta.inspeccionar() } )
+		keyboard.b().onPressDo( { jacinta.buscarEn( jacinta.position() ) } )
 	}
 
 	method inventario() {

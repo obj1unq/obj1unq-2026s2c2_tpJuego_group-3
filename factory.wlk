@@ -1,5 +1,7 @@
 import obstaculos.*
 import enemigos.*
+import ingredientes.*
+
 
 // const new TipoArbusto( morfología = "flores", estado = "simple" )
 // const new TipoArbusto( morfología = "flores", estado = "buscado" )
@@ -9,7 +11,7 @@ import enemigos.*
 object factoryArbustos {
     method crear(){
         const contenido = [
-            "yarará", "vacío", "cebolla", "calabaza", "choclo", "papa" // cuando tenga los objetos hechos esto cambia
+            yarará, vacío, cebolla, calabaza, choclo, papa
         ]
 
         const posibleContenidoMezclado = contenido.randomized() // documentacion wollok: Answers a new list of the same type and with the same content in a random order
@@ -37,10 +39,6 @@ object generadorDeAleatoriedad {
     method tipoArbustoAleatorio() {
         const morfologías = ["hojas", "flores"]
 
-        return new TipoArbusto( morfología = morfologías.anyOne(), estado = "simple")
+        return new TipoArbusto( morfología = morfologías.anyOne(), estado = "simple" )
     }
-}
-
-object vacío {
-  
 }
