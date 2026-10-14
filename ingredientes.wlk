@@ -1,4 +1,11 @@
-object calabaza {
+import morral.*
+
+class Calabaza {
+
+    var property arbusto
+
+    method position() { return arbusto.position() }
+
     method image() {
         return "calabaza.png"
     }
@@ -6,9 +13,19 @@ object calabaza {
     method nombre() {
         return "calabaza"
     }
+
+    method interactuarCon(personaje) {
+        morral.agregarIngrediente(self)
+        game.say( personaje, "¡Genial! encontré " + self.nombre() )
+    }
 }
 
-object cebolla {
+class Cebolla {
+
+    var property arbusto
+
+    method position() { return arbusto.position() }
+
     method image() {
         return "cebolla.png"
     }
@@ -16,9 +33,19 @@ object cebolla {
     method nombre() {
         return "cebolla"
     }
+
+    method interactuarCon(personaje) {
+        morral.agregarIngrediente(self)
+        game.say( personaje, "¡Genial! encontré " + self.nombre() )
+    }
 }
 
-object papa {
+class Papa {
+
+    var property arbusto
+
+    method position() { return arbusto.position() }
+
     method image() {
         return "papa.png"
     }
@@ -26,14 +53,29 @@ object papa {
     method nombre() {
         return "papa"
     }
+
+    method interactuarCon(personaje) {
+        morral.agregarIngrediente(self)
+        game.say( personaje, "¡Genial! encontré " + self.nombre() )
+    }
 }
 
-object choclo {
+class Choclo {
+
+    var property arbusto
+
+    method position() { return arbusto.position() }
+
     method image() {
         return "choclo.png"
     }
 
     method nombre() {
         return "choclo"
+    }
+
+    method interactuarCon(personaje) {
+        morral.agregarIngrediente(self)
+        game.say( personaje, "¡Genial! encontré " + self.nombre() )
     }
 }
