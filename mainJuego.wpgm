@@ -1,20 +1,28 @@
+import inventario.*
 import wollok.game.*
+import personaje.*
+import configuraciones.*
+import direcciones.*
+import obstaculos.*
+import factory.*
+import enemigos.*
+import vidas.*
 
-import juego.pepita
 
-object config {
-
-	method configurarEscenario() {
-		game.title("Pepita")
-		game.height(10)
-		game.width(10)
-	}
-}
-program PepitaGame {
-
+program Jacinta {
 	config.configurarEscenario()
+
+	config.teclas()
+
+	config.visuales()
+
+	factoryArbustos.crear()
+
+	game.addVisual(jacinta)
+
+	vidas.actualizar(jacinta.vida())
 	
-	game.addVisualCharacter(pepita)
+	config.inventario()
 
 	game.start()
 }
