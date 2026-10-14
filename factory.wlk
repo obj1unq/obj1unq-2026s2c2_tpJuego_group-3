@@ -1,25 +1,62 @@
 import obstaculos.*
 import enemigos.*
+import ingredientes.*
 
 // const new TipoArbusto( morfología = "flores", estado = "simple" )
 // const new TipoArbusto( morfología = "flores", estado = "buscado" )
 // const new TipoArbusto( morfología = "hojas", estado = "simple" )
 // const new TipoArbusto( morfología = "hojas", estado = "buscado" )
 
+object constructorYarara { //Correccion del profe
+    method construir(arbusto) {
+        return new Yarará( arbusto = arbusto )
+    }
+}
+
+object constructorVacio {//Correccion del profe
+    method construir(arbusto) {
+        return new Vacío( arbusto = arbusto )
+    }
+}
+
+object constructorCebolla {//Correccion del profe
+    method construir(arbusto) {
+        return new Cebolla( arbusto = arbusto )
+    }
+}
+
+object constructorCalabaza {//Correccion del profe
+    method construir(arbusto) {
+        return new Calabaza( arbusto = arbusto )
+    }
+}
+
+object constructorChoclo{//Correccion del profe
+    method construir(arbusto) {
+        return new Choclo( arbusto = arbusto )
+    }
+}
+
+object constructorPapa {//Correccion del profe
+    method construir(arbusto) {
+        return new Papa( arbusto = arbusto )
+    }
+}
+
 object factoryArbustos {
     method crear(){
-        const contenido = [
-            "yarará", "vacío", "cebolla", "calabaza", "choclo", "papa" // cuando tenga los objetos hechos esto cambia
+        const contenidos = [
+            constructorYarara, constructorVacio, constructorCebolla, constructorCalabaza, constructorChoclo, constructorPapa, constructorVacio, constructorYarara, constructorVacio, constructorYarara, constructorVacio
         ]
 
-        const posibleContenidoMezclado = contenido.randomized() // documentacion wollok: Answers a new list of the same type and with the same content in a random order
+        //const posibleContenidoMezclado = contenido.randomized() // documentacion wollok: Answers a new list of the same type and with the same content in a random order
 
-        (0..5).forEach( { elemento => 
+        contenidos.forEach( { contenido => 
             const arbusto = new Arbusto( 
                     position = generadorDeAleatoriedad.posicionAleatoria(),
-                    tipo = generadorDeAleatoriedad.tipoArbustoAleatorio(),
-                    contenido = posibleContenidoMezclado.get(elemento)
+                    tipo = generadorDeAleatoriedad.tipoArbustoAleatorio()
                 )
+                arbusto.contenido(contenido.construir(arbusto)) //correccion del profe
                 game.addVisual(arbusto)
             }
         )
@@ -37,10 +74,6 @@ object generadorDeAleatoriedad {
     method tipoArbustoAleatorio() {
         const morfologías = ["hojas", "flores"]
 
-        return new TipoArbusto( morfología = morfologías.anyOne(), estado = "simple")
+        return new TipoArbusto( morfología = morfologías.anyOne(), estado = "simple" )
     }
-}
-
-object vacío {
-  
 }

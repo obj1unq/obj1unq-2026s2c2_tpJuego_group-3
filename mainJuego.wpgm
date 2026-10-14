@@ -6,18 +6,23 @@ import direcciones.*
 import obstaculos.*
 import factory.*
 import enemigos.*
-import niveles.*
+import vidas.*
+
 
 program Jacinta {
 	config.configurarEscenario()
-	config.movimientos()
-	config.inventario()
 
-	game.addVisual(nivel1)
+	config.teclas()
+
+	config.visuales()
 
 	factoryArbustos.crear()
 
 	game.addVisual(jacinta)
+
+	vidas.actualizar(jacinta.vida())
 	
+	config.inventario()
+
 	game.start()
 }
