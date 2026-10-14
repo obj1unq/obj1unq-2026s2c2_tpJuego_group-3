@@ -25,7 +25,7 @@ object jacinta {
   }
 
 
-  method recibirVidaExtra() {            // era solo una vida que da no? como un bonus
+  method recibirVidaExtra() {           
     vida += 1
     vidas.actualizar(vida)
   }
@@ -36,18 +36,18 @@ object jacinta {
     self.validarCantidadVidas()
     self.recibirVidaExtra()
     mate.usar()
-    game.say(self, "¡Excelente! Recuperé una vida ")
+    game.say(self, "¡Excelente! Recuperé una vida")
   }
 
-  method validarTomarMate(){                // si el mate ya se uso tira error, o mejor que no haga nada?
+  method validarTomarMate(){               
     if (not mate.puedeUsarse()){
-      self.error("¡No tengo más vidas disponibles!")
+      self.error("¡Ups! Me quedé sin agua para el mate")
     }
   }
 
   method validarCantidadVidas(){
     if (vida >= 3) {
-      self.error("No necesito tomar mate, ya tengo todas mis vidas!")
+      self.error("¡Estoy muy llena para tomar mate ahora!")
     }
   }
 
