@@ -17,6 +17,10 @@ class Arbusto {
     method serInspeccionado() {
       tipo.estado("buscado")
     }
+
+    method esUnArbusto() {
+      return true
+    }
 }
 
 class TipoArbusto {
@@ -26,4 +30,10 @@ class TipoArbusto {
     method cuerpo() {
         return morfología + "-" + estado
     }
+}
+
+object vacío {
+  method interactuarCon(personaje) {
+    game.say( personaje, "¡Qué lástima che! acá solo hay yuyo" )
+  }
 }

@@ -45,9 +45,37 @@ object jacinta {
     position = dirección.siguiente(position)
   }
 
+  method buscarEn(posicion) {
+      self.validarBuscarEn(posicion)
+      self.inspeccionarEn(posicion)
+  }
+
+  method validarBuscarEn(posicion) {
+    if ( not self.hayArbustoEn(posicion) ){
+      self.error("No hay nada en este lugar")
+    }
+  }
+
+  method hayArbustoEn(posicion) {
+    return not self.arbustoEn(posicion).isEmpty() // creo que esto es lo que no me lee el juego 
+  }
+
+  method arbustoEn(posicion) {
+    return self.arbustosEn(posicion).anyOne() // documentacion wollok: Answers any element of a non-empty collection
+  }
+
+  method arbustosEn(posicion) {
+    return game.getObjectsIn(position).filter( { elemento => self.esArbustoVálidoParaBuscar(elemento) } )
+  }
+
+  method esArbustoVálidoParaBuscar(elemento) {
+    return elemento != self and elemento.esUnArbusto() 
+  }
+  
+  method inspeccionarEn(posicion) {
+      const arbusto = self.arbustoEn(posicion)
+      arbusto.serInspeccionado()
+      arbusto.contenido().interactuarCon(self)
+  }
+
 }
-
-  //method inspeccionar() {
-  //  return 
-  //}
-
