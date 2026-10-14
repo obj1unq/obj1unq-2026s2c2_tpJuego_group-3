@@ -8,20 +8,34 @@ import ingredientes.*
 // const new TipoArbusto( morfología = "hojas", estado = "simple" )
 // const new TipoArbusto( morfología = "hojas", estado = "buscado" )
 
+object constructorYarara { //Correccion del profe
+    method construir(arbusto) {
+        return new Yarará(arbusto = arbusto)
+    }
+}
+
+object constructorVacio {//Correccion del profe
+    method construir(arbusto) {
+        return new Vacío(arbusto=arbusto)
+    }
+}
+
+
+
 object factoryArbustos {
     method crear(){
         const contenido = [
-            yarará, vacío, cebolla, calabaza, choclo, papa
+            constructorYarara, constructorVacio, cebolla, calabaza, choclo, papa
         ]
 
-        const posibleContenidoMezclado = contenido.randomized() // documentacion wollok: Answers a new list of the same type and with the same content in a random order
+        //const posibleContenidoMezclado = contenido.randomized() // documentacion wollok: Answers a new list of the same type and with the same content in a random order
 
         (0..5).forEach( { elemento => 
             const arbusto = new Arbusto( 
                     position = generadorDeAleatoriedad.posicionAleatoria(),
-                    tipo = generadorDeAleatoriedad.tipoArbustoAleatorio(),
-                    contenido = posibleContenidoMezclado.get(elemento)
+                    tipo = generadorDeAleatoriedad.tipoArbustoAleatorio()
                 )
+                arbusto.contenido(contenido.anyOne().construir(arbusto)) //correccion del profe
                 game.addVisual(arbusto)
             }
         )

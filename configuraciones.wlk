@@ -21,12 +21,14 @@ object config {
 	}
 
 	method inventario() {
-		const slot1 = new Inventario(position = game.at(1, game.height()-1), numeroDeSlot = 0, personaje = jacinta)
-		const slot2 = new Inventario(position = game.at(2, game.height()-1), numeroDeSlot = 1, personaje = jacinta)
-		const slot3 = new Inventario(position = game.at(3, game.height()-1), numeroDeSlot = 2, personaje = jacinta)
+		const slot1 = new Inventario(position = game.at(10, game.height()-2), numeroDeSlot = 0, personaje = jacinta)
+		const slot2 = new Inventario(position = game.at(11, game.height()-2), numeroDeSlot = 1, personaje = jacinta)
+		const slot3 = new Inventario(position = game.at(12, game.height()-2), numeroDeSlot = 2, personaje = jacinta)
 		game.addVisual(slot1)
 		game.addVisual(slot2)
 		game.addVisual(slot3)
+	
+		
 	}
 }
 

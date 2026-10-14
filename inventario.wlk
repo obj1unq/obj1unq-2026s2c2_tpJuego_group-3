@@ -13,6 +13,9 @@ class Inventario {
         }
             
     }
+    method text() { //Correccion del profe
+        return self.image()
+    }
 }
 
 

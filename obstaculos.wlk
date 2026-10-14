@@ -8,7 +8,7 @@ class Arbusto {
 
     var property position
     var property tipo // tipoArbusto: con hojas o flores
-    var property contenido // yarará, vacío o ingrediente (por ahora son 4)
+    var property contenido = null// yarará, vacío o ingrediente (por ahora son 4), se setean despues del new
 
     method image() {
       return "arbusto-" + tipo.cuerpo() + ".png"
