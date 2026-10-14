@@ -3,6 +3,7 @@ import direcciones.*
 import obstaculos.*
 import morral.*
 import mate.*
+import vidas.*
 
 object jacinta {
   var property position = game.origin()
@@ -19,13 +20,16 @@ object jacinta {
   }
 
 
-  method ataqueDeEnemigo() {               // segun enemigo las vidas que quita?
-        vida -= 1
+
+  method ataqueDeEnemigo() {              // segun enemigo las vidas que quita?
+    vida -= 1
+    vidas.actualizar(vida)
   }
 
 
-  method recibirVidaExtra() {             // era solo una vida que da no? como un bonus
-        vida += 1
+  method recibirVidaExtra() {            // era solo una vida que da no? como un bonus
+    vida += 1
+    vidas.actualizar(vida)
   }
 
 
