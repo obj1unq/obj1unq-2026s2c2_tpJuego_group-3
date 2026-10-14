@@ -15,8 +15,8 @@ object config {
 		keyboard.right().onPressDo( { jacinta.mover(derecha) } )
 		keyboard.up().onPressDo( { jacinta.mover(arriba) } )
 		keyboard.down().onPressDo( { jacinta.mover(abajo) } )
-    	keyboard.t().onPressDo( { jacinta.tomarMate() } )     
-		keyboard.b().onPressDo( { jacinta.buscarEn( jacinta.position() ) } )
+    keyboard.t().onPressDo( { jacinta.tomarMate() } )     
+    keyboard.b().onPressDo( { jacinta.buscarEn( jacinta.position() ) } )
 	}
 
 	method inventario() {
