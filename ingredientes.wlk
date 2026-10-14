@@ -1,6 +1,11 @@
 import morral.*
 
-object calabaza {
+class Calabaza {
+
+    var property arbusto
+
+    method position() { return arbusto.position() }
+
     method image() {
         return "calabaza.png"
     }
@@ -15,7 +20,12 @@ object calabaza {
     }
 }
 
-object cebolla {
+class Cebolla {
+
+    var property arbusto
+
+    method position() { return arbusto.position() }
+
     method image() {
         return "cebolla.png"
     }
@@ -30,7 +40,12 @@ object cebolla {
     }
 }
 
-object papa {
+class Papa {
+
+    var property arbusto
+
+    method position() { return arbusto.position() }
+
     method image() {
         return "papa.png"
     }
@@ -45,7 +60,12 @@ object papa {
     }
 }
 
-object choclo {
+class Choclo {
+
+    var property arbusto
+
+    method position() { return arbusto.position() }
+
     method image() {
         return "choclo.png"
     }

@@ -16,10 +16,8 @@ object jacinta {
   }
 
   method ingredientes() {
-        return morral.ingredientes()
+    return morral.ingredientes()
   }
-
-
 
   method ataqueDeEnemigo() {              // segun enemigo las vidas que quita?
     vida -= 1
@@ -50,8 +48,8 @@ object jacinta {
   }
 
   method buscarEn(posicion) {
-      self.validarBuscarEn(posicion)
-      self.inspeccionarEn(posicion)
+    self.validarBuscarEn(posicion)
+    self.inspeccionarEn(posicion)
   }
 
   method validarBuscarEn(posicion) {
@@ -77,9 +75,9 @@ object jacinta {
   }
   
   method inspeccionarEn(posicion) {
-      const arbusto = self.arbustoEn(posicion)
-      arbusto.serInspeccionado()
-      arbusto.contenido().interactuarCon(self)
+    const arbusto = self.arbustoEn(posicion)
+    arbusto.serInspeccionado()
+    arbusto.contenido().interactuarCon(self)
   }
 
 

@@ -2,6 +2,10 @@ import wollok.game.*
 import personaje.*
 import direcciones.*
 import inventario.*
+import niveles.*
+import mate.*
+import morral.*
+
 
 object config {
 	method configurarEscenario() {
@@ -11,13 +15,19 @@ object config {
 		game.cellSize(50)
 	}
 
-	method movimientos() {
+	method teclas() {
 		keyboard.left().onPressDo( { jacinta.mover(izquierda) } )
 		keyboard.right().onPressDo( { jacinta.mover(derecha) } )
 		keyboard.up().onPressDo( { jacinta.mover(arriba) } )
 		keyboard.down().onPressDo( { jacinta.mover(abajo) } )
-    keyboard.t().onPressDo( { jacinta.tomarMate() } )     
-    keyboard.b().onPressDo( { jacinta.buscarEn( jacinta.position() ) } )
+    	keyboard.t().onPressDo( { jacinta.tomarMate() } )     
+    	keyboard.b().onPressDo( { jacinta.buscarEn( jacinta.position() ) } )
+	}
+
+	method visuales() {
+		game.addVisual(nivel1)
+		game.addVisual(mate)
+		game.addVisual(morral)
 	}
 
 	method inventario() {
@@ -27,8 +37,6 @@ object config {
 		game.addVisual(slot1)
 		game.addVisual(slot2)
 		game.addVisual(slot3)
-	
-		
 	}
 }
 
