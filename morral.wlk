@@ -4,7 +4,7 @@ object morral {
 
     var property ingredientes = []    // lo hice como lista porque entiendo que puede tener repetidos
 
-    var property position = game.at(24, 12)
+    var property position = game.at(12, 24)
 
 
 
@@ -24,6 +24,6 @@ object morral {
 
 
     method image() {
-        return "morral.png"
+        return "morral3.png"
     }
 }
