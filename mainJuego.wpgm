@@ -15,7 +15,6 @@ import morral.*
 program Jacinta {
 	config.configurarEscenario()
 	config.movimientos()
-	config.inventario()
 
 	game.addVisual(nivel1)
 
@@ -29,5 +28,6 @@ program Jacinta {
 
 	game.addVisual(morral)
 	
+	config.inventario()
 	game.start()
 }

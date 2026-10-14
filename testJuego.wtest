@@ -26,7 +26,7 @@ describe "Estado del inventario en demo" {
     const slot1 = new Inventario(position = game.at(1, 12), numeroDeSlot = 0, personaje = jacinta)
 
     assert.equals(0, jacinta.ingredientes().size())   //Jacinta no tiene ingredientes al inicio
-
+    assert.equals("slot-vacio.png", slot1.image()) //El slot del inventario está vacío
     jacinta.ingredientes().add(calabaza) //Se encuentra una calabaza y lo guarda
 
     assert.equals(1, jacinta.ingredientes().size())  //Jacinta ahora tiene exactamente un ingrediente
