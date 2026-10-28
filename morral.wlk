@@ -23,7 +23,7 @@ object morral {
     }
 
 
-    method image() {
-        return "morral3.png"
-    }
+    //method image() {
+    //    return "morral3.png"
+    //}
 }
