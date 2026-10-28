@@ -1,7 +1,6 @@
 import morral.*
 
 class Calabaza {
-
     var property arbusto
 
     method position() { return arbusto.position() }
@@ -16,12 +15,12 @@ class Calabaza {
 
     method interactuarCon(personaje) {
         morral.agregarIngrediente(self)
+        game.sound("audioItemPickUp.mp3").play()
         game.say( personaje, "¡Genial! encontré " + self.nombre() )
     }
 }
 
 class Cebolla {
-
     var property arbusto
 
     method position() { return arbusto.position() }
@@ -36,12 +35,12 @@ class Cebolla {
 
     method interactuarCon(personaje) {
         morral.agregarIngrediente(self)
+        game.sound("audioItemPickUp.mp3").play()
         game.say( personaje, "¡Genial! encontré " + self.nombre() )
     }
 }
 
 class Papa {
-
     var property arbusto
 
     method position() { return arbusto.position() }
@@ -56,12 +55,12 @@ class Papa {
 
     method interactuarCon(personaje) {
         morral.agregarIngrediente(self)
+        game.sound("audioItemPickUp.mp3").play()
         game.say( personaje, "¡Genial! encontré " + self.nombre() )
     }
 }
 
 class Choclo {
-
     var property arbusto
 
     method position() { return arbusto.position() }
@@ -76,6 +75,7 @@ class Choclo {
 
     method interactuarCon(personaje) {
         morral.agregarIngrediente(self)
+        game.sound("audioItemPickUp.mp3").play()
         game.say( personaje, "¡Genial! encontré " + self.nombre() )
     }
 }

@@ -27,7 +27,7 @@ describe "Estado del inventario en demo" {
 
     assert.equals(0, jacinta.ingredientes().size())   //Jacinta no tiene ingredientes al inicio
     assert.equals("slot-vacio.png", slot1.image()) //El slot del inventario está vacío
-    jacinta.ingredientes().add(calabaza) //Se encuentra una calabaza y lo guarda
+    //jacinta.ingredientes().add(calabaza) //Se encuentra una calabaza y lo guarda
 
     assert.equals(1, jacinta.ingredientes().size())  //Jacinta ahora tiene exactamente un ingrediente
     assert.equals("slot-con-calabaza.png", slot1.image()) //Este ingrediente se ve en el slot del inventario
