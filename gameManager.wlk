@@ -9,18 +9,37 @@ import morral.*
 object gameManager {
     var nivelActual = nivel1
 
-    method iniciarNivel() {
-
-		game.addVisual(nivelActual)
+   method iniciarNivel() {
+        game.addVisual(nivelActual)
         nivelActual.visualesDelNivel()
 
+        const personaje = nivelActual.personaje()
+        if (game.hasVisual(personaje)) {
+            game.removeVisual(personaje)
+        }
+        personaje.position(game.origin()) 
+        game.addVisual(personaje)
+
+        self.metaActual().configurarColision(personaje)
     }
 
     method actualizarNivel(){
-        nivelActual = nivelActual.actualizarNivel()
+        nivelActual.validarFinal()
+        game.removeVisual(nivelActual) 
+        nivelActual.remover()
+
+        const nivelAnterior = nivelActual
+        nivelActual = nivelAnterior.actualizarNivel()
+        
+        self.iniciarNivel()
     }
 
-    method nivelActual() {
-        return nivelActual.image()
+
+    method viisuales() {
+        return nivelActual.visualesNecesarias()({visualActual => visualActual})
+    }
+
+    method metaActual() {
+        return nivelActual.meta()
     }
 }
