@@ -7,22 +7,25 @@ import obstaculos.*
 import factory.*
 import enemigos.*
 import vidas.*
-
+import gameManager.*
+import niveles.*
 
 program Jacinta {
 	config.configurarEscenario()
 
 	config.teclas()
 
-	config.visuales()
+	gameManager.iniciarNivel()
 
 	factoryArbustos.crear()
 
-	game.addVisual(jacinta)
-
 	vidas.actualizar(jacinta.vida())
+
+	//game.addVisual(jacinta)
 	
 	config.inventario()
+
+	game.onCollideDo(gameManager.metaActual(), {metaActual => metaActual.interactuarCon()})
 
 	game.start()
 }
