@@ -4,10 +4,11 @@ import obstaculos.*
 import morral.*
 import mate.*
 import vidas.*
+import gameManager.*
 
 object jacinta {
   var property position = game.origin()
-  var property ingredientes = [] //temporal, esto puede ser el morral, avisar así modifico el código del inventario
+  var property ingredientes = morral //temporal, esto puede ser el morral, avisar así modifico el código del inventario
 
   var property vida = 3        // check
 
@@ -89,5 +90,7 @@ object jacinta {
     arbusto.contenido().interactuarCon(self)
   }
 
-
+  method interactuarCon() {
+    gameManager.actualizarNivel()
+  }
 }
