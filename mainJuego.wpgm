@@ -25,7 +25,6 @@ program Jacinta {
 	
 	config.inventario()
 
-	game.onCollideDo(gameManager.metaActual(), {metaActual => metaActual.interactuarCon()})
 
 	game.start()
 }
