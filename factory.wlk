@@ -63,6 +63,7 @@ object factoryArbustos {
     }
 }
 
+
 object generadorDeAleatoriedad {
     method posicionAleatoria() {
         return game.at(
