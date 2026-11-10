@@ -4,6 +4,8 @@ import obstaculos.*
 import morral.*
 import mate.*
 import vidas.*
+import lago.*
+
 
 object jacinta {
   var property position = game.origin()
@@ -88,6 +90,20 @@ object jacinta {
     arbusto.serInspeccionado()
     arbusto.contenido().interactuarCon(self)
   }
+
+
+  method recargarMate() {
+    if (lago.contiene(position)) {
+        if (mate.puedeUsarse()) {
+            game.say(self, "Ya tengo suficiente agua en el mate, no necesito recargarlo")
+        } else {
+            mate.recargar()
+            game.say(self, "¡Ya tengo agua para el mate!")
+        }
+    } else {
+        game.say(self, "Tengo que acercarme al lago para recargar el mate")
+    }
+}
 
 
 }
