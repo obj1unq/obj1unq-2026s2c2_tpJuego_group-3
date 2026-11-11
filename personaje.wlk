@@ -4,12 +4,13 @@ import obstaculos.*
 import morral.*
 import mate.*
 import vidas.*
+import gameManager.*
 import lago.*
-
 
 object jacinta {
   var property position = game.origin()
-  var property ingredientes = [] //temporal, esto puede ser el morral, avisar así modifico el código del inventario
+  var property ingredientes = morral //temporal, esto puede ser el morral, avisar así modifico el código del inventario
+
   var property vida = 3        // check
   var últimaDirección = abajo // puse abajo por poner una x defecto xk no me deja dejarlo vacio
 
@@ -133,4 +134,7 @@ object jacinta {
     }
   }
 
+  method interactuarCon() {
+    gameManager.actualizarNivel()
+  }
 }
