@@ -7,7 +7,7 @@ import configuraciones.*
 import factory.*
 import vidas-y-mate.*
 
-object gameManager {
+object nivelManager {
     var nivelActual = nivel1
 
    method iniciarNivel() {
