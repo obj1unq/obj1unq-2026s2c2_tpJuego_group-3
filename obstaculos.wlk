@@ -23,7 +23,7 @@ class Arbusto {
 }
 
 class TipoArbusto {
-    var property morfología // "hojas" o "flores"
+    var property morfología // "floresRosas" o "floresAmarillas"
     var property estado = "simple"
 
     method cuerpo() {

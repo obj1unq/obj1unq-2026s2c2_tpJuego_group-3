@@ -67,7 +67,7 @@ object generadorDeAleatoriedad {
     }
 
     method tipoArbustoAleatorio() {
-        const morfologías = ["hojas", "flores"]
+        const morfologías = ["floresRosas", "floresAmarillas"]
 
         return new TipoArbusto( morfología = morfologías.anyOne(), estado = "simple" )
     }
