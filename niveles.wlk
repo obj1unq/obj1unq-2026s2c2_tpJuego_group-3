@@ -28,19 +28,15 @@ class Nivel {
 
     method visualesNecesarias()
 
-
     method remover() {
         self.visualesNecesarias().forEach({visual => game.removeVisual(visual)})
     }
-    
 
     method meta()
 }
 
 object nivel1 inherits Nivel { // pastizal
-
     override method activarNivel() {
-        
 	    factoryArbustos.crear()
         game.addVisual(mate)
         config.inventario()
@@ -54,8 +50,8 @@ object nivel1 inherits Nivel { // pastizal
     override method validarFinal(){
         if(morral.cantidadIngredientes() < 3) {
             self.error("No tengo todos los ingredientes para irme")
+        }
     }
-}
 
     override method actualizarNivel(){
         super()
@@ -72,7 +68,6 @@ object nivel1 inherits Nivel { // pastizal
 }
 
 object nivel2 inherits Nivel { // campo con caminos
-
     override method activarNivel() {
 
         lago.desactivar()
@@ -134,13 +129,12 @@ object nivel2 inherits Nivel { // campo con caminos
 }
 
 object nivel3 inherits Nivel {
-
     override method activarNivel() {
         //game.addVisual(metaNivel3)
     }
 
     override method image() { //Falta el fondo del nivel 3
-        return "fondoNivel1.jpg"
+        return "fondoNivel3.jpg"
     }
 
     override method validarFinal(){
@@ -165,7 +159,6 @@ object nivel3 inherits Nivel {
 }
 
 object finDelJuego {
-
     var property position = game.origin()
 
     method image() {
@@ -174,7 +167,7 @@ object finDelJuego {
 }
 
 class Meta {
-    var property position = game.at(13, 5)
+    var property position = game.at(23, 7)
     
     method image() = "meta.png" 
 
@@ -193,10 +186,11 @@ class Meta {
     } 
 }
 object metaNivel1 inherits Meta {
+
 }
 
 object metaNivel2 inherits Meta {
-    override method position() = game.at(13, 16)
+    override method position() = game.at(23, 7)
 }
 
 object metaNivel3 inherits Meta {

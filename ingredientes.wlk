@@ -1,17 +1,13 @@
 import inventario.*
 
-class Calabaza {
+class Ingrediente {
     var property arbusto
 
-    method position() { return arbusto.position() }
+    method position() = arbusto.position() 
 
-    method image() {
-        return "calabaza.png"
-    }
+    method image()
 
-    method nombre() {
-        return "calabaza"
-    }
+    method nombre()
 
     method interactuarCon(personaje) {
         morral.agregarIngrediente(self)
@@ -20,62 +16,26 @@ class Calabaza {
     }
 }
 
-class Cebolla {
-    var property arbusto
+class Calabaza inherits Ingrediente {
+    override method image() = "calabaza.png"
 
-    method position() { return arbusto.position() }
-
-    method image() {
-        return "cebolla.png"
-    }
-
-    method nombre() {
-        return "cebolla"
-    }
-
-    method interactuarCon(personaje) {
-        morral.agregarIngrediente(self)
-        game.sound("audioItemPickUp.mp3").play()
-        game.say( personaje, "¡Genial! encontré " + self.nombre() )
-    }
+    override method nombre() = "calabaza"
 }
 
-class Papa {
-    var property arbusto
+class Cebolla inherits Ingrediente {
+    override method image() = "cebolla.png"
 
-    method position() { return arbusto.position() }
-
-    method image() {
-        return "papa.png"
-    }
-
-    method nombre() {
-        return "papa"
-    }
-
-    method interactuarCon(personaje) {
-        morral.agregarIngrediente(self)
-        game.sound("audioItemPickUp.mp3").play()
-        game.say( personaje, "¡Genial! encontré " + self.nombre() )
-    }
+    override method nombre() = "cebolla"
 }
 
-class Choclo {
-    var property arbusto
+class Papa inherits Ingrediente {
+    override method image() = "papa.png"
 
-    method position() { return arbusto.position() }
+    override method nombre() = "papa"
+}
 
-    method image() {
-        return "choclo.png"
-    }
+class Choclo inherits Ingrediente {
+    override method image() = "choclo.png"
 
-    method nombre() {
-        return "choclo"
-    }
-
-    method interactuarCon(personaje) {
-        morral.agregarIngrediente(self)
-        game.sound("audioItemPickUp.mp3").play()
-        game.say( personaje, "¡Genial! encontré " + self.nombre() )
-    }
+    override method nombre() = "choclo"
 }
