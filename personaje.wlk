@@ -5,6 +5,7 @@ import morral.*
 import mate.*
 import vidas.*
 import lago.*
+import gameManager.*
 
 
 object jacinta {
@@ -12,6 +13,9 @@ object jacinta {
   var property ingredientes = [] //temporal, esto puede ser el morral, avisar así modifico el código del inventario
 
   var property vida = 3        // check
+
+  var property perdio = false
+
 
   method image() {
     return "jacinta.png"
@@ -22,8 +26,15 @@ object jacinta {
   }
 
   method ataqueDeEnemigo() {              // segun enemigo las vidas que quita?
-    vida -= 1
-    vidas.actualizar(vida)
+    if (not perdio) {
+        vida -= 1
+        vidas.actualizar(vida)
+
+        if (vida == 0) {
+            perdio = true
+            gameManager.reiniciarNivel()
+        }
+    }
   }
 
 
@@ -34,11 +45,13 @@ object jacinta {
 
 
   method tomarMate() {
-    self.validarTomarMate()
-    self.validarCantidadVidas()
-    self.recibirVidaExtra()
-    mate.usar()
-    game.say(self, "¡Excelente! Recuperé una vida ")
+    if (not perdio) {        // aca tambien bloquee esta posibilidad si jacinta perdio, no puede tomar mate
+        self.validarTomarMate()
+        self.validarCantidadVidas()
+        self.recibirVidaExtra()
+        mate.usar()
+        game.say(self, "¡Excelente! Recuperé una vida ")
+    }
   }
 
   method validarTomarMate(){                // si el mate ya se uso tira error, o mejor que no haga nada?
@@ -55,7 +68,9 @@ object jacinta {
 
 
   method mover(dirección) {
-    position = dirección.siguiente(position)
+    if (not perdio) {              // si jacinta perdio no puede moverse
+        position = dirección.siguiente(position)
+    }
   }
 
   method buscarEn(posicion) {
@@ -103,7 +118,15 @@ object jacinta {
     } else {
         game.say(self, "Tengo que acercarme al lago para recargar el mate")
     }
-}
+  }
+
+
+  method reiniciarEstado() {
+    vida = 3
+    position = game.origin()
+    perdio = false
+    vidas.actualizar(vida)
+  }
 
 
 }

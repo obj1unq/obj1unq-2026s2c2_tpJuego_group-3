@@ -36,4 +36,15 @@ object vidas {
         vida3.actualizar(cantidad >= 3)
     
     }
+
+
+    method reiniciar() {
+        vida1.actualizar(false)
+        vida2.actualizar(false)
+        vida3.actualizar(false)
+
+        vida1.actualizar(true)
+        vida2.actualizar(true)
+        vida3.actualizar(true)
+    }
 }

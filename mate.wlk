@@ -25,6 +25,11 @@ object mate {
     method recargar() {
         disponible = true
     }
+
+
+    method reiniciar() {
+    disponible = true
+    }
 }
 
 
