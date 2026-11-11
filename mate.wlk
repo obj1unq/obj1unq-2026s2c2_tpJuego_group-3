@@ -20,6 +20,11 @@ object mate {
     method image() {
         return "mate.png"
     }
+
+
+    method recargar() {
+        disponible = true
+    }
 }
 
 

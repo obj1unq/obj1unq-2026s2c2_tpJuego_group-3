@@ -1,8 +1,10 @@
 import wollok.game.*
+
 import personaje.*
 import factory.*
 import obstaculos.*
 import enemigos.*
+import lago.*
 
 class Nivel {
     var property position = game.origin()
@@ -26,6 +28,11 @@ object nivel2 inherits Nivel { // campo con caminos
     override method activarNivel() {
         super()
 
+        lago.desactivar()
+        
+        game.sound("audioNivel1.mp3").play()
+    }
+
         game.addVisual(pampero)
 
         self.persecuciónAPersonaje()
@@ -42,6 +49,11 @@ object nivel2 inherits Nivel { // campo con caminos
 
     method colisionesDelNivel() {
         game.onCollideDo( jacinta, { objeto => objeto.interactuarCon(jacinta) })
+    }
+
+    override method activarNivel() {
+        super()
+        lago.activar()
     }
 
     override method image() {

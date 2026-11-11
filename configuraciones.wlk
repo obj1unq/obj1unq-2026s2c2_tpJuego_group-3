@@ -23,7 +23,9 @@ object config {
     	keyboard.t().onPressDo( { jacinta.tomarMate() } )     
     	keyboard.b().onPressDo( { jacinta.buscarEn( jacinta.position() ) } )
 
-		keyboard.f().onPressDo( { jacinta.ahuyentar() } )
+		  keyboard.f().onPressDo( { jacinta.ahuyentar() } )
+
+    	keyboard.r().onPressDo( { jacinta.recargarMate() } )
 	}
 
 	method visuales() {

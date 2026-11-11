@@ -4,6 +4,8 @@ import obstaculos.*
 import morral.*
 import mate.*
 import vidas.*
+import lago.*
+
 
 object jacinta {
   var property position = game.origin()
@@ -117,4 +119,18 @@ object jacinta {
   method guardarFacon() {
     game.schedule( 800, { tieneFacon = false } )
   }
+
+  method recargarMate() {
+    if (lago.contiene(position)) {
+        if (mate.puedeUsarse()) {
+            game.say(self, "Ya tengo suficiente agua en el mate, no necesito recargarlo")
+        } else {
+            mate.recargar()
+            game.say(self, "¡Ya tengo agua para el mate!")
+        }
+    } else {
+        game.say(self, "Tengo que acercarme al lago para recargar el mate")
+    }
+  }
+
 }
