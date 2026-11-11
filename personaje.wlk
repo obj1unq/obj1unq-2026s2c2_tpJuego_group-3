@@ -9,7 +9,7 @@ import lago.*
 
 object jacinta {
   var property position = game.origin()
-  var property ingredientes = morral //temporal, esto puede ser el morral, avisar así modifico el código del inventario
+  var property ingredientes = morral 
 
   var property vida = 3        // check
   var últimaDirección = abajo // puse abajo por poner una x defecto xk no me deja dejarlo vacio
@@ -73,7 +73,7 @@ object jacinta {
   }
 
   method hayArbustoEn(posicion) {
-    return not self.arbustosEn(posicion).isEmpty() // creo que esto es lo que no me lee el juego 
+    return not self.arbustosEn(posicion).isEmpty() 
   }
 
   method arbustoEn(posicion) {

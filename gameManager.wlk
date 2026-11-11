@@ -5,18 +5,28 @@ import inventario.*
 import niveles.*
 import mate.*
 import morral.*
+import configuraciones.*
+import vidas.*
 
 object gameManager {
     var nivelActual = nivel1
 
    method iniciarNivel() {
         game.addVisual(nivelActual)
-        nivelActual.visualesDelNivel()
+        nivelActual.activarNivel()
+
+
+
+	    config.teclas()
+
+        
 
         const personaje = nivelActual.personaje()
+
         if (game.hasVisual(personaje)) {
             game.removeVisual(personaje)
         }
+
         personaje.position(game.origin()) 
         game.addVisual(personaje)
 
@@ -25,18 +35,12 @@ object gameManager {
 
     method actualizarNivel(){
         nivelActual.validarFinal()
-        game.removeVisual(nivelActual) 
         nivelActual.remover()
 
         const nivelAnterior = nivelActual
         nivelActual = nivelAnterior.actualizarNivel()
         
         self.iniciarNivel()
-    }
-
-
-    method viisuales() {
-        return nivelActual.visualesNecesarias()({visualActual => visualActual})
     }
 
     method metaActual() {

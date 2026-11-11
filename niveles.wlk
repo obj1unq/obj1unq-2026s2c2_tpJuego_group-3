@@ -11,10 +11,11 @@ import configuraciones.*
 
 class Nivel {
     var property personaje = jacinta
+    var property position = game.origin()
 
     method activarNivel() {
-        game.clear()
         game.sound("audioNivel1y2.mp3").play()
+        game.addVisual(self.meta())
     }
 
     method image()
@@ -26,23 +27,25 @@ class Nivel {
         return
     }
 
-    method visualesDelNivel() 
-
     method visualesNecesarias()
+
+
+    method remover() {
+        self.visualesNecesarias().forEach({visual => game.removeVisual(visual)})
+    }
     
+
+    method meta()
 }
 
 object nivel1 inherits Nivel { // pastizal
-    var property position = game.origin()
-    const meta = metaNivel1
-
-    method meta(){
-        return meta
-    }
 
     override method activarNivel() {
+        
+	    factoryArbustos.crear()
+        game.addVisual(mate)
+        config.inventario()
         super()
-        game.sound("audioNivel1.mp3").play()
     }
 
     override method image() {
@@ -60,30 +63,24 @@ object nivel1 inherits Nivel { // pastizal
         return nivel2
     }
 
-    override method visualesDelNivel() { 
-        game.addVisual(mate)
-        game.addVisual(metaNivel1)
-    }
-
     override method visualesNecesarias() {
-        return #{mate, metaNivel1, self}
+        return #{self, metaNivel1}
     }
 
-    method remover() {
-        self.visualesNecesarias().forEach({visual => game.removeVisual(visual)})
+    override method meta() {
+        return metaNivel1
     }
-
 }
 
 object nivel2 inherits Nivel { // campo con caminos
 
     override method activarNivel() {
-        super()
 
         lago.desactivar()
+
+        game.addVisual(mate)
         
-        game.sound("audioNivel1.mp3").play()
-    }
+        //game.sound("audioNivel1.mp3").play()
 
         game.addVisual(pampero)
 
@@ -92,6 +89,10 @@ object nivel2 inherits Nivel { // campo con caminos
         game.addVisual(lobizón)
 
         self.colisionesDelNivel()
+
+        super() 
+
+        lago.activar()
     }
 
     method persecuciónAPersonaje() {
@@ -103,10 +104,6 @@ object nivel2 inherits Nivel { // campo con caminos
         game.onCollideDo( jacinta, { objeto => objeto.interactuarCon(jacinta) })
     }
 
-    override method activarNivel() {
-        super()
-        lago.activar()
-    }
 
     override method image() {
         return "fondoNivel2.jpeg"
@@ -120,24 +117,29 @@ object nivel2 inherits Nivel { // campo con caminos
 
     override method actualizarNivel() {
         super()
-        return nivel1
-    }
-
-    override method visualesDelNivel() {
-        game.addVisual(metaNivel2)
+        return nivel3
     }
 
     override method visualesNecesarias() {
         return #{metaNivel2, self}
     }
 
-    method remover() {
-        self.visualesNecesarias().forEach({visual => game.removeVisual(visual)})
+    override method meta() {
+        return metaNivel2
+    }
+
+    override method remover(){
+        super()
+        game.removeTickEvent("movimientoPampero")
+        game.removeTickEvent("movimientoLobizon")
     }
 }
 
 object nivel3 inherits Nivel {
-    var property position = game.origin()
+
+    override method activarNivel() {
+        //game.addVisual(metaNivel3)
+    }
 
     override method image() { //Falta el fondo del nivel 3
         return "gauchito.jpg"
@@ -154,12 +156,13 @@ object nivel3 inherits Nivel {
         return finDelJuego
     }
 
-    override method visualesDelNivel() {
-        game.addVisual(metaNivel3)
-    }
 
     override method visualesNecesarias() {
         return #{metaNivel3, self}
+    }
+
+    override method meta() {
+        return metaNivel3
     }
 }
 
