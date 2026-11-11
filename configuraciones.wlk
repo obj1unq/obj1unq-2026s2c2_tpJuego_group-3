@@ -22,6 +22,9 @@ object config {
 		keyboard.down().onPressDo( { jacinta.mover(abajo) } )
     	keyboard.t().onPressDo( { jacinta.tomarMate() } )     
     	keyboard.b().onPressDo( { jacinta.buscarEn( jacinta.position() ) } )
+
+		  keyboard.f().onPressDo( { jacinta.ahuyentar() } )
+
     	keyboard.r().onPressDo( { jacinta.recargarMate() } )
 	}
 
