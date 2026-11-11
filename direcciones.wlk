@@ -18,6 +18,8 @@ object arriba {
         mapa.validarDentro(nuevaPosition)
         return nuevaPosition
     }
+
+    method opuesta() = abajo
 }
 
 object abajo {
@@ -26,6 +28,8 @@ object abajo {
         mapa.validarDentro(nuevaPosition)
         return nuevaPosition
     }
+
+    method opuesta() = arriba
 }
 
 object derecha {
@@ -34,6 +38,8 @@ object derecha {
         mapa.validarDentro(nuevaPosition)
         return nuevaPosition
     }
+
+    method opuesta() = izquierda
 }
 
 object izquierda{
@@ -42,4 +48,6 @@ object izquierda{
         mapa.validarDentro(nuevaPosition)
         return nuevaPosition
     }
+
+    method opuesta() = derecha
 }

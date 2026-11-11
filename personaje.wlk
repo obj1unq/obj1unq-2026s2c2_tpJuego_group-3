@@ -8,11 +8,14 @@ import vidas.*
 object jacinta {
   var property position = game.origin()
   var property ingredientes = [] //temporal, esto puede ser el morral, avisar así modifico el código del inventario
-
   var property vida = 3        // check
+  var últimaDirección = abajo // puse abajo por poner una x defecto xk no me deja dejarlo vacio
+
+  var property mareada = false
+  var property tieneFacon = false
 
   method image() {
-    return "jacinta.png"
+    return if (tieneFacon) "jacintaConFacon.png" else "jacinta.png"
   }
 
   method ingredientes() {
@@ -24,12 +27,10 @@ object jacinta {
     vidas.actualizar(vida)
   }
 
-
   method recibirVidaExtra() {            // era solo una vida que da no? como un bonus
     vida += 1
     vidas.actualizar(vida)
   }
-
 
   method tomarMate() {
     self.validarTomarMate()
@@ -51,11 +52,12 @@ object jacinta {
     }
   }
 
-
   method mover(dirección) {
+    últimaDirección = dirección
     position = dirección.siguiente(position)
   }
 
+  // NIVEL 1 - ARBUSTOS
   method buscarEn(posicion) {
     self.validarBuscarEn(posicion)
     self.inspeccionarEn(posicion)
@@ -89,5 +91,30 @@ object jacinta {
     arbusto.contenido().interactuarCon(self)
   }
 
+  method serEmpujada(){
+    const posiciónHaciaAtras = últimaDirección.opuesta().siguiente(position)
+    position = posiciónHaciaAtras
+  }
 
+  // NIVEL 2 - PAMPERO
+  method marearse() {
+    mareada = true
+    game.schedule( 4000, { self.volverALaNormalidad() } )
+  }
+
+  method volverALaNormalidad() {
+    mareada = false
+    game.say( self, "Ya está, se me pasó el mareo" )
+  }
+
+  // NIVEL 2 - LOBIZON
+  method ahuyentar() {
+    tieneFacon = true
+    game.say( self, "Tomá" )
+    self.guardarFacon()
+  }
+
+  method guardarFacon() {
+    game.schedule( 800, { tieneFacon = false } )
+  }
 }
