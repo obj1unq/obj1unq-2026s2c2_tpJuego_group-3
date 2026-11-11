@@ -8,6 +8,7 @@ import morral.*
 import configuraciones.*
 import vidas.*
 
+
 object gameManager {
     var nivelActual = nivel1
 
@@ -46,4 +47,21 @@ object gameManager {
     method metaActual() {
         return nivelActual.meta()
     }
+
+    method reiniciarNivel() {
+        game.clear()
+
+        jacinta.reiniciarEstado()
+        mate.reiniciar()
+        vidas.reiniciar()
+        nivelActual.activarNivel()
+        game.addVisual(mate)
+        game.addVisual(morral)
+        game.addVisual(jacinta)
+
+        if (nivelActual == nivel1) {
+            factoryArbustos.crear()
+        }
+    }
 }
+
