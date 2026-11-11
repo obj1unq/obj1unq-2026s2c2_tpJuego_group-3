@@ -1,11 +1,8 @@
 import wollok.game.*
 import direcciones.*
 import obstaculos.*
-import morral.*
-import mate.*
-import vidas.*
-import gameManager.*
-import lago.*
+import inventario.*
+import vidas-y-mate.*
 import gameManager.*
 
 object jacinta {

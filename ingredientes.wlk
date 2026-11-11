@@ -1,4 +1,4 @@
-import morral.*
+import inventario.*
 
 class Calabaza {
     var property arbusto

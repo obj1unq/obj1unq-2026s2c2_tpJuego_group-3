@@ -18,7 +18,7 @@ object arriba {
         mapa.validarDentro(nuevaPosition)
         return nuevaPosition
     }
-
+    
     method opuesta() = abajo
 }
 

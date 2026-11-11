@@ -3,11 +3,9 @@ import personaje.*
 import direcciones.*
 import inventario.*
 import niveles.*
-import mate.*
-import morral.*
 import configuraciones.*
-import vidas.*
-
+import factory.*
+import vidas-y-mate.*
 
 object gameManager {
     var nivelActual = nivel1
@@ -18,7 +16,6 @@ object gameManager {
         nivelActual.activarNivel()
 
 	    config.teclas()
-
 
 	    vidas.actualizar(jacinta.vida())
 

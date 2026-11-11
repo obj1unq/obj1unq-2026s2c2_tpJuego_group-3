@@ -2,18 +2,13 @@ import obstaculos.*
 import enemigos.*
 import ingredientes.*
 
-// const new TipoArbusto( morfología = "flores", estado = "simple" )
-// const new TipoArbusto( morfología = "flores", estado = "buscado" )
-// const new TipoArbusto( morfología = "hojas", estado = "simple" )
-// const new TipoArbusto( morfología = "hojas", estado = "buscado" )
-
 object constructorYarara {
     method construir(arbusto) {
         return new Yarará( arbusto = arbusto )
     }
 }
 
-object constructorVacio {//Correccion del profe
+object constructorVacio {
     method construir(arbusto) {
         return new Vacío( arbusto = arbusto )
     }

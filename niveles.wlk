@@ -3,9 +3,8 @@ import personaje.*
 import factory.*
 import obstaculos.*
 import enemigos.*
-import lago.*
-import morral.*
-import mate.*
+import inventario.*
+import vidas-y-mate.*
 import gameManager.*
 import configuraciones.*
 
@@ -53,8 +52,8 @@ object nivel1 inherits Nivel { // pastizal
     }
 
     override method validarFinal(){
-    if(morral.cantidadIngredientes() < 3) {
-       self.error("No tengo todos los ingredientes para irme")
+        if(morral.cantidadIngredientes() < 3) {
+            self.error("No tengo todos los ingredientes para irme")
     }
 }
 
@@ -141,7 +140,7 @@ object nivel3 inherits Nivel {
     }
 
     override method image() { //Falta el fondo del nivel 3
-        return "gauchito.jpg"
+        return "fondoNivel1.jpg"
     }
 
     override method validarFinal(){
@@ -176,7 +175,8 @@ object finDelJuego {
 
 class Meta {
     var property position = game.at(13, 5)
-    method image()
+    
+    method image() = "meta2.png" 
 
     method configurarColision(personaje) {
         game.onCollideDo(self, { objeto => if (objeto == personaje) { self.interactuarCon() } })
@@ -191,11 +191,9 @@ class Meta {
     }
 }
 object metaNivel1 inherits Meta {
-    override method image() = "meta.png" //Cambiar las imagenes de meta
 }
 
 object metaNivel2 inherits Meta {
-    override method image() = "meta.png"
     override method position() = game.at(13, 16)
 }
 
