@@ -5,7 +5,7 @@ import obstaculos.*
 import enemigos.*
 import inventario.*
 import vidas-y-mate.*
-import gameManager.*
+import nivelManager.*
 import configuraciones.*
 
 class Nivel {
@@ -180,15 +180,17 @@ class Meta {
 
     method configurarColision(personaje) {
         game.onCollideDo(self, { objeto => if (objeto == personaje) { self.interactuarCon() } })
-    }
-
-    method interactuarCon() { //Implemente el metodo de try catch que mostro el profesor leo
-        try {
-            gameManager.actualizarNivel()
-        } catch e : Exception {
-            game.say(self, e.message()) 
-        }
-    }
+    } 
+    /*
+    Implementar la colision en Jacinta unicamente, "chocar" los que no tengan colision no hacen nada, los que si "interactuarCon"
+    Hay una clase colisionables: Meta, Lobi, Pampeano al "chocar" deben usar "interactuarCon"
+    En todos los objetos visuales que puedan conlisionar con Jacinta deben entender el mensaje "chocar"
+    meta hereda de la clase "colisionable", y esta hereda de la clase "visual" 
+    La clase visual tiene el metodo "chocar" que no hace nada
+    */
+    method interactuarCon() { 
+        nivelManager.actualizarNivel()
+    } 
 }
 object metaNivel1 inherits Meta {
 }

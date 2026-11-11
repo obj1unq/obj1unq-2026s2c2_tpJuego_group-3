@@ -6,12 +6,12 @@ import direcciones.*
 import obstaculos.*
 import enemigos.*
 import vidas-y-mate.*
-import gameManager.*
+import nivelManager.*
 import niveles.*
 
 program Jacinta {
 	config.configurarEscenario()
-	gameManager.iniciarNivel()
+	nivelManager.iniciarNivel()
 
 	game.start()
 }

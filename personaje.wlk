@@ -3,7 +3,7 @@ import direcciones.*
 import obstaculos.*
 import inventario.*
 import vidas-y-mate.*
-import gameManager.*
+import nivelManager.*
 
 object jacinta {
   var property position = game.origin()
@@ -33,7 +33,7 @@ object jacinta {
 
         if (vida == 0) {
             perdio = true
-            gameManager.reiniciarNivel()
+            nivelManager.reiniciarNivel()
         }
     }
   }
@@ -154,6 +154,6 @@ object jacinta {
   }
 
   method interactuarCon() {
-    gameManager.actualizarNivel()
+    nivelManager.actualizarNivel()
   }
 }
