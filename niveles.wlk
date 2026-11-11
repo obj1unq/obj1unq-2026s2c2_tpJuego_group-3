@@ -176,7 +176,7 @@ object finDelJuego {
 class Meta {
     var property position = game.at(13, 5)
     
-    method image() = "meta2.png" 
+    method image() = "meta.png" 
 
     method configurarColision(personaje) {
         game.onCollideDo(self, { objeto => if (objeto == personaje) { self.interactuarCon() } })
@@ -199,6 +199,6 @@ object metaNivel2 inherits Meta {
 
 object metaNivel3 inherits Meta {
     override method position() = game.at(13, game.origin().y())
-    override method image() = "meta.png"
+    override method image() = "meta2.png"
 }
 
