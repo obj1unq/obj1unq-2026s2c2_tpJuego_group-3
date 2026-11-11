@@ -13,13 +13,13 @@ object gameManager {
 
    method iniciarNivel() {
         game.addVisual(nivelActual)
+
         nivelActual.activarNivel()
-
-
 
 	    config.teclas()
 
-        
+
+	    vidas.actualizar(jacinta.vida())
 
         const personaje = nivelActual.personaje()
 
@@ -35,7 +35,7 @@ object gameManager {
 
     method actualizarNivel(){
         nivelActual.validarFinal()
-        nivelActual.remover()
+        game.clear()
 
         const nivelAnterior = nivelActual
         nivelActual = nivelAnterior.actualizarNivel()

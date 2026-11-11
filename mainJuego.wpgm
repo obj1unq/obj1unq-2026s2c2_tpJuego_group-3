@@ -10,11 +10,10 @@ import gameManager.*
 import niveles.*
 
 program Jacinta {
-
 	config.configurarEscenario()
 	gameManager.iniciarNivel()
 	
-	vidas.actualizar(jacinta.vida())
+	
 
 
 	game.start()

@@ -79,8 +79,7 @@ object nivel2 inherits Nivel { // campo con caminos
         lago.desactivar()
 
         game.addVisual(mate)
-        
-        //game.sound("audioNivel1.mp3").play()
+
 
         game.addVisual(pampero)
 
