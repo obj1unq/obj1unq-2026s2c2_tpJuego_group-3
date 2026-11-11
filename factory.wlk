@@ -7,7 +7,7 @@ import ingredientes.*
 // const new TipoArbusto( morfología = "hojas", estado = "simple" )
 // const new TipoArbusto( morfología = "hojas", estado = "buscado" )
 
-object constructorYarara { //Correccion del profe
+object constructorYarara {
     method construir(arbusto) {
         return new Yarará( arbusto = arbusto )
     }
@@ -19,25 +19,25 @@ object constructorVacio {//Correccion del profe
     }
 }
 
-object constructorCebolla {//Correccion del profe
+object constructorCebolla {
     method construir(arbusto) {
         return new Cebolla( arbusto = arbusto )
     }
 }
 
-object constructorCalabaza {//Correccion del profe
+object constructorCalabaza {
     method construir(arbusto) {
         return new Calabaza( arbusto = arbusto )
     }
 }
 
-object constructorChoclo{//Correccion del profe
+object constructorChoclo{ 
     method construir(arbusto) {
         return new Choclo( arbusto = arbusto )
     }
 }
 
-object constructorPapa {//Correccion del profe
+object constructorPapa {
     method construir(arbusto) {
         return new Papa( arbusto = arbusto )
     }

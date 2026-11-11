@@ -22,14 +22,17 @@ object config {
 		keyboard.down().onPressDo( { jacinta.mover(abajo) } )
     	keyboard.t().onPressDo( { jacinta.tomarMate() } )     
     	keyboard.b().onPressDo( { jacinta.buscarEn( jacinta.position() ) } )
+
+		  keyboard.f().onPressDo( { jacinta.ahuyentar() } )
+
     	keyboard.r().onPressDo( { jacinta.recargarMate() } )
 	}
 
-	method visuales() {
-		game.addVisual(nivel1)
-		game.addVisual(mate)
-		game.addVisual(morral)
-	}
+	// method visuales() {
+	// 	game.addVisual(nivel1)
+	// 	game.addVisual(mate)
+	// 	game.addVisual(morral)
+	// }
 
 	method inventario() {
 		const slot1 = new Inventario(position = game.at(10, game.height()-2), numeroDeSlot = 0, personaje = jacinta)
@@ -39,6 +42,7 @@ object config {
 		game.addVisual(slot2)
 		game.addVisual(slot3)
 	}
+
 }
 
  	

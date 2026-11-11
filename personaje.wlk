@@ -4,21 +4,25 @@ import obstaculos.*
 import morral.*
 import mate.*
 import vidas.*
+import gameManager.*
 import lago.*
 import gameManager.*
 
-
 object jacinta {
   var property position = game.origin()
-  var property ingredientes = [] //temporal, esto puede ser el morral, avisar así modifico el código del inventario
+  var property ingredientes = morral 
 
   var property vida = 3        // check
+  var últimaDirección = abajo // puse abajo por poner una x defecto xk no me deja dejarlo vacio
+
+  var property mareada = false
+  var property tieneFacon = false
 
   var property perdio = false
 
 
   method image() {
-    return "jacinta.png"
+    return if (tieneFacon) "jacintaConFacon.png" else "jacinta.png"
   }
 
   method ingredientes() {
@@ -37,12 +41,10 @@ object jacinta {
     }
   }
 
-
   method recibirVidaExtra() {            // era solo una vida que da no? como un bonus
     vida += 1
     vidas.actualizar(vida)
   }
-
 
   method tomarMate() {
     if (not perdio) {        // aca tambien bloquee esta posibilidad si jacinta perdio, no puede tomar mate
@@ -66,13 +68,14 @@ object jacinta {
     }
   }
 
-
   method mover(dirección) {
+    últimaDirección = dirección
     if (not perdio) {              // si jacinta perdio no puede moverse
         position = dirección.siguiente(position)
     }
   }
 
+  // NIVEL 1 - ARBUSTOS
   method buscarEn(posicion) {
     self.validarBuscarEn(posicion)
     self.inspeccionarEn(posicion)
@@ -85,7 +88,7 @@ object jacinta {
   }
 
   method hayArbustoEn(posicion) {
-    return not self.arbustosEn(posicion).isEmpty() // creo que esto es lo que no me lee el juego 
+    return not self.arbustosEn(posicion).isEmpty() 
   }
 
   method arbustoEn(posicion) {
@@ -106,6 +109,32 @@ object jacinta {
     arbusto.contenido().interactuarCon(self)
   }
 
+  method serEmpujada(){
+    const posiciónHaciaAtras = últimaDirección.opuesta().siguiente(position)
+    position = posiciónHaciaAtras
+  }
+
+  // NIVEL 2 - PAMPERO
+  method marearse() {
+    mareada = true
+    game.schedule( 4000, { self.volverALaNormalidad() } )
+  }
+
+  method volverALaNormalidad() {
+    mareada = false
+    game.say( self, "Ya está, se me pasó el mareo" )
+  }
+
+  // NIVEL 2 - LOBIZON
+  method ahuyentar() {
+    tieneFacon = true
+    game.say( self, "Tomá" )
+    self.guardarFacon()
+  }
+
+  method guardarFacon() {
+    game.schedule( 800, { tieneFacon = false } )
+  }
 
   method recargarMate() {
     if (lago.contiene(position)) {
@@ -120,7 +149,6 @@ object jacinta {
     }
   }
 
-
   method reiniciarEstado() {
     vida = 3
     position = game.origin()
@@ -128,5 +156,7 @@ object jacinta {
     vidas.actualizar(vida)
   }
 
-
+  method interactuarCon() {
+    gameManager.actualizarNivel()
+  }
 }

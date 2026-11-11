@@ -1,28 +1,20 @@
+import configuraciones.*
 import inventario.*
 import wollok.game.*
 import personaje.*
-import configuraciones.*
 import direcciones.*
 import obstaculos.*
-import factory.*
 import enemigos.*
 import vidas.*
-
+import gameManager.*
+import niveles.*
 
 program Jacinta {
 	config.configurarEscenario()
-
-	config.teclas()
-
-	config.visuales()
-
-	factoryArbustos.crear()
-
-	game.addVisual(jacinta)
-
-	vidas.actualizar(jacinta.vida())
+	gameManager.iniciarNivel()
 	
-	config.inventario()
+	
+
 
 	game.start()
 }
