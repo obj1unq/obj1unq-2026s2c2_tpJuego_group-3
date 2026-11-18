@@ -30,5 +30,12 @@ object morral {
     method cantidadIngredientes() {
         return ingredientes.size()
     }
+
+    method vaciarMorral() {
+        ingredientes.forEach({ingrediente => self.perderIngrediente(ingrediente)})
+    }
+    method perderIngrediente(ingrediente) {
+        ingredientes.remove(ingrediente)
+    }
 }
 

@@ -7,8 +7,9 @@ import inventario.*
 import vidas-y-mate.*
 import nivelManager.*
 import configuraciones.*
+import colision-y-clases.*
 
-class Nivel {
+class Nivel inherits Visual{
     var property personaje = jacinta
     var property position = game.origin()
 
@@ -103,7 +104,7 @@ object nivel2 inherits Nivel { // campo con caminos
     }
 
     override method validarFinal(){
-        if(personaje.vida() <= 0){ 
+        if(game.hasVisual(lobizón)){ 
             self.error("Tengo que llegar al pueblo sano y salvo")
         }
     }
@@ -134,7 +135,7 @@ object nivel3 inherits Nivel {
     }
 
     override method image() { //Falta el fondo del nivel 3
-        return "fondoNivel3.jpg"
+        return "fondoNivel3.png"
     }
 
     override method validarFinal(){
@@ -166,14 +167,11 @@ object finDelJuego {
     }
 }
 
-class Meta {
+class Meta inherits Colisionable{
     var property position = game.at(23, 7)
     
     method image() = "meta.png" 
 
-    method configurarColision(personaje) {
-        game.onCollideDo(self, { objeto => if (objeto == personaje) { self.interactuarCon() } })
-    } 
     /*
     Implementar la colision en Jacinta unicamente, "chocar" los que no tengan colision no hacen nada, los que si "interactuarCon"
     Hay una clase colisionables: Meta, Lobi, Pampeano al "chocar" deben usar "interactuarCon"
@@ -181,7 +179,7 @@ class Meta {
     meta hereda de la clase "colisionable", y esta hereda de la clase "visual" 
     La clase visual tiene el metodo "chocar" que no hace nada
     */
-    method interactuarCon() { 
+    override method interactuarCon(personaje) { 
         nivelManager.actualizarNivel()
     } 
 }

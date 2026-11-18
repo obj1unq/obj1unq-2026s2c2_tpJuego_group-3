@@ -17,7 +17,7 @@ object nivelManager {
 
 	    config.teclas()
 
-	    vidas.actualizar(jacinta.vida())
+        vidas.actualizar(jacinta.vida())
 
         const personaje = nivelActual.personaje()
 
@@ -28,7 +28,7 @@ object nivelManager {
         personaje.position(game.origin()) 
         game.addVisual(personaje)
 
-        self.metaActual().configurarColision(personaje)
+        game.onCollideDo(jacinta, {objeto => jacinta.chocar(objeto)})
     }
 
     method actualizarNivel(){
@@ -39,6 +39,8 @@ object nivelManager {
         nivelActual = nivelAnterior.actualizarNivel()
         
         self.iniciarNivel()
+
+        vidas.reiniciar(jacinta.vida())
     }
 
     method metaActual() {
@@ -48,17 +50,9 @@ object nivelManager {
     method reiniciarNivel() {
         game.clear()
 
+        self.iniciarNivel()
+        mate.recargar()
         jacinta.reiniciarEstado()
-        mate.reiniciar()
-        vidas.reiniciar()
-        nivelActual.activarNivel()
-        game.addVisual(mate)
-        game.addVisual(morral)
-        game.addVisual(jacinta)
-
-        if (nivelActual == nivel1) {
-            factoryArbustos.crear()
-        }
     }
 }
 

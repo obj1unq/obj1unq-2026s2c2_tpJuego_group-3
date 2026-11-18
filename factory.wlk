@@ -38,10 +38,10 @@ object constructorPapa {
     }
 }
 
-object factoryArbustos {
+object factoryArbustos{
     method crear(){
         const contenidos = [
-            constructorYarara, constructorVacio, constructorCebolla, constructorCalabaza, constructorChoclo, constructorPapa, constructorVacio, constructorYarara, constructorVacio, constructorYarara, constructorVacio
+            constructorYarara, constructorYarara, constructorVacio, constructorCebolla, constructorCalabaza, constructorChoclo, constructorPapa, constructorVacio, constructorYarara, constructorVacio, constructorYarara, constructorVacio
         ]
 
         //const posibleContenidoMezclado = contenido.randomized() // documentacion wollok: Answers a new list of the same type and with the same content in a random order
