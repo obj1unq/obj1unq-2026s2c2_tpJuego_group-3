@@ -1,9 +1,10 @@
 import wollok.game.*
 import personaje.*
 import factory.*
+import colision-y-clases.*
 
 // NIVEL 1
-class Arbusto {
+class Arbusto inherits Visual{
     // tiene tres situaciones: puede estar vacio, tener un ingrediente o puede aparecer una yarará.
     var property position
     var property tipo // tipoArbusto: con hojas o flores
@@ -42,12 +43,12 @@ class Vacío {
 }
 
 // NIVEL 2
-object pampero {
+object pampero inherits Colisionable{
   var property position = game.at(15,15)
 
   method image() = "pampero.png"
 
-  method interactuarCon(personaje) {
+  override method interactuarCon(personaje) {
     // se podria agregar audio de viento fuerte
     game.say( personaje, "¡Ay virgencita! ¡Se me dio vuelta el mundo!" )
     personaje.marearse()
@@ -71,3 +72,4 @@ object pampero {
     return 0
   }
 }
+

@@ -1,3 +1,4 @@
+import colision-y-clases.*
 import wollok.game.*
 import direcciones.*
 import obstaculos.*
@@ -5,7 +6,7 @@ import inventario.*
 import vidas-y-mate.*
 import nivelManager.*
 
-object jacinta {
+object jacinta inherits Visual{
   var property position = game.origin()
   var property ingredientes = morral 
 
@@ -151,9 +152,10 @@ object jacinta {
     position = game.origin()
     perdio = false
     vidas.actualizar(vida)
+    ingredientes.vaciarMorral()
   }
 
-  method interactuarCon() {
-    nivelManager.actualizarNivel()
+  override method chocar(objeto) {
+    objeto.chocar(self)
   }
 }
