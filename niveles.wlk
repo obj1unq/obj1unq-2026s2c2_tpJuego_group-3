@@ -126,6 +126,10 @@ object nivel2 inherits Nivel { // campo con caminos
         game.removeTickEvent("movimientoPampero")
         game.removeTickEvent("movimientoLobizon")
     }
+
+    method interactuarCon(jacinta) {
+      // revisar por que esto es necesario
+    }
 }
 
 object nivel3 inherits Nivel {

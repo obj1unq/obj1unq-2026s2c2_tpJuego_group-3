@@ -8,68 +8,65 @@ import nivelManager.*
 object jacinta {
   var property position = game.origin()
   var property ingredientes = morral 
-
   var property vida = 3        // check
-  var últimaDirección = abajo // puse abajo por poner una x defecto xk no me deja dejarlo vacio
 
-  var property mareada = false
-  var property tieneFacon = false
+  var últimaDirección = abajo // puse abajo por poner una x defecto xk no me deja dejarlo vacio
+  var property estadoMovimiento = normal
+
+  var property tieneFacon = false // cambiar por estado de imagen
 
   var property perdio = false
-
 
   method image() {
     return if (tieneFacon) "jacintaConFacon.png" else "jacinta.png"
   }
 
-  method ingredientes() {
-    return morral.ingredientes()
-  }
+  method ingredientes() = morral.ingredientes()
 
-  method ataqueDeEnemigo() {              // segun enemigo las vidas que quita?
+  method ataqueDeEnemigo() {
     if (not perdio) {
-        vida -= 1
-        vidas.actualizar(vida)
+      vida -= 1
+      vidas.actualizar(vida)
 
-        if (vida == 0) {
-            perdio = true
-            nivelManager.reiniciarNivel()
-        }
+      if (vida == 0) {
+        perdio = true
+        nivelManager.reiniciarNivel()
+      }
     }
   }
 
-  method recibirVidaExtra() {            // era solo una vida que da no? como un bonus
+  method recibirVidaExtra() {         
     vida += 1
     vidas.actualizar(vida)
   }
 
   method tomarMate() {
-    if (not perdio) {        // aca tambien bloquee esta posibilidad si jacinta perdio, no puede tomar mate
+    if (not perdio) {
         self.validarTomarMate()
         self.validarCantidadVidas()
         self.recibirVidaExtra()
         mate.usar()
-        game.say(self, "¡Excelente! Recuperé una vida ")
+        game.say(self, "¡El mate me revive!")
     }
   }
 
-  method validarTomarMate(){                // si el mate ya se uso tira error, o mejor que no haga nada?
+  method validarTomarMate(){   
     if (not mate.puedeUsarse()){
-      self.error("¡No tengo más vidas disponibles!")
+      self.error("¡Me quedé sin agua che!") // ¡No tengo más vidas disponibles!
     }
   }
 
   method validarCantidadVidas(){
-    if (vida >= 3) {
-      self.error("No necesito tomar mate, ya tengo todas mis vidas!")
+    if ( vida >= 3 ) {
+      self.error("No estoy para tomar mate!") // No necesito tomar mate, ya tengo todas mis vidas!
     }
   }
 
   method mover(dirección) {
     últimaDirección = dirección
-    if (not perdio) {              // si jacinta perdio no puede moverse
-        position = dirección.siguiente(position)
-    }
+    if ( not perdio ) {             
+      position = estadoMovimiento.moverseHacia(dirección, self) 
+    } 
   }
 
   // NIVEL 1 - ARBUSTOS
@@ -113,12 +110,12 @@ object jacinta {
 
   // NIVEL 2 - PAMPERO
   method marearse() {
-    mareada = true
-    game.schedule( 4000, { self.volverALaNormalidad() } )
+    estadoMovimiento = mareada
+    game.schedule( 8000, { self.volverALaNormalidad() } )
   }
 
   method volverALaNormalidad() {
-    mareada = false
+    estadoMovimiento = normal
     game.say( self, "Ya está, se me pasó el mareo" )
   }
 
@@ -136,13 +133,13 @@ object jacinta {
   method recargarMate() {
     if (lago.contiene(position)) {
         if (mate.puedeUsarse()) {
-            game.say(self, "Ya tengo suficiente agua en el mate, no necesito recargarlo")
+            game.say( self, "Ya tengo suficiente agua en el mate, no necesito recargarlo" )
         } else {
             mate.recargar()
-            game.say(self, "¡Ya tengo agua para el mate!")
+            game.say( self, "¡Ya tengo agua para el mate!" )
         }
     } else {
-        game.say(self, "Tengo que acercarme al lago para recargar el mate")
+        game.say( self, "Tengo que acercarme al lago para recargar el mate" )
     }
   }
 
@@ -156,4 +153,22 @@ object jacinta {
   method interactuarCon() {
     nivelManager.actualizarNivel()
   }
+}
+
+
+// ESTADOS DE MOVIMIENTO JACINTA
+object mareada {
+
+  method moverseHacia(dirección, personaje) {
+    return dirección.opuesta().siguiente(personaje.position())
+  }
+
+}
+
+object normal {
+
+  method moverseHacia(dirección, personaje) {
+    return dirección.siguiente(personaje.position())
+  }
+
 }
