@@ -20,6 +20,9 @@ object arriba {
     }
     
     method opuesta() = abajo
+
+    method imagenPersonaje() = "jacinta.png"
+    // method imagenPersonaje() = "jacintaConFacon"
 }
 
 object abajo {
@@ -30,6 +33,9 @@ object abajo {
     }
 
     method opuesta() = arriba
+
+    method imagenPersonaje() = "jacinta.png"
+    // method imagenPersonaje() = "jacintaConFacon"
 }
 
 object derecha {
@@ -40,6 +46,9 @@ object derecha {
     }
 
     method opuesta() = izquierda
+
+    method imagenPersonaje() = "jacinta-derecha.png"
+    // method imagenPersonaje() = "jacintaConFacon-derecha"
 }
 
 object izquierda{
@@ -50,4 +59,7 @@ object izquierda{
     }
 
     method opuesta() = derecha
+
+    method imagenPersonaje() = "jacinta.png"
+    // method imagenPersonaje() = "jacintaConFacon"
 }

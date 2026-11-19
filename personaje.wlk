@@ -17,7 +17,7 @@ object jacinta {
 
   var property perdio = false
 
-  method image() {
+  method image() { // VER ESTO 
     return if (tieneFacon) "jacintaConFacon.png" else "jacinta.png"
   }
 
@@ -154,7 +154,6 @@ object jacinta {
     nivelManager.actualizarNivel()
   }
 }
-
 
 // ESTADOS DE MOVIMIENTO JACINTA
 object mareada {
