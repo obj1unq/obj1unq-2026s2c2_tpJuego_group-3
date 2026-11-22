@@ -25,10 +25,11 @@ object nivelManager {
             game.removeVisual(personaje)
         }
 
-        personaje.position(game.origin()) 
+        nivelActual.agregarPersonaje()
+
         game.addVisual(personaje)
 
-        game.onCollideDo(jacinta, {objeto => jacinta.chocar(objeto)})
+        game.onCollideDo(jacinta, {objeto => objeto.chocar(jacinta)})
     }
 
     method actualizarNivel(){
