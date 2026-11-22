@@ -152,9 +152,6 @@ object jacinta inherits Visual{
     ingredientes.vaciarMorral()
   }
 
-  override method chocar(objeto) {
-    objeto.chocar(self)
-  }
 }
 
 // ESTADOS DE MOVIMIENTO JACINTA
