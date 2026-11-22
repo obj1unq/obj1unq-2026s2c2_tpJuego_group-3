@@ -1,6 +1,7 @@
 import personaje.*
+import colision-y-clases.*
 
-class Yarará {
+class Yarará inherits Colisionable {
     var property arbusto
 
     method position() { return arbusto.position() }
@@ -9,7 +10,7 @@ class Yarará {
         return "yarara.png"
     }
 
-    method interactuarCon(personaje) {
+    override method interactuarCon(personaje) {
         game.addVisual(self)
         game.sound("audioYarara.mp3").play()
         personaje.ataqueDeEnemigo()
@@ -18,13 +19,13 @@ class Yarará {
     }
 }
 
-object lobizón {
+object lobizón inherits Colisionable{
     var property position = game.at(20, 20)
     const nombreTick = "movimientoLobizon"
 
     method image() = "lobizon.png"
 
-    method interactuarCon(personaje) {
+    override method interactuarCon(personaje) {
         // audio de aullido? grñido?
         if ( personaje.tieneFacon() ) {
             game.say( personaje, "¡Fuera!" )
@@ -62,3 +63,4 @@ object lobizón {
         return 0
     }
 }
+

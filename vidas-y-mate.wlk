@@ -32,14 +32,12 @@ object vidas {
         vida3.actualizar(cantidad >= 3)
     }
 
-    method reiniciar() {
+    method reiniciar(cantidad) {
         vida1.actualizar(false)
         vida2.actualizar(false)
         vida3.actualizar(false)
 
-        vida1.actualizar(true)
-        vida2.actualizar(true)
-        vida3.actualizar(true)
+        self.actualizar(cantidad)
     }
 }
 
@@ -65,9 +63,6 @@ object mate {
         disponible = true
     }
 
-    method reiniciar() {
-        disponible = true
-    }
 }
 
 object lago {
