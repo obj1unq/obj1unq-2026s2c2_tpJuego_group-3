@@ -34,6 +34,8 @@ class Nivel inherits Visual{
     }
 
     method meta()
+
+    method agregarPersonaje()
 }
 
 object nivel1 inherits Nivel { // pastizal
@@ -65,6 +67,10 @@ object nivel1 inherits Nivel { // pastizal
 
     override method meta() {
         return metaNivel1
+    }
+
+    override method agregarPersonaje() {
+        personaje.position(game.origin()) 
     }
 }
 
@@ -128,17 +134,17 @@ object nivel2 inherits Nivel { // campo con caminos
         game.removeTickEvent("movimientoLobizon")
     }
 
-    method interactuarCon(jacinta) {
-      // revisar por que esto es necesario
+    override method agregarPersonaje() {
+        personaje.position(game.at(2, 21)) 
     }
 }
 
 object nivel3 inherits Nivel {
     override method activarNivel() {
-        //game.addVisual(metaNivel3)
+        //aca irian todas las visuales y sonidos del nivel tres, no el fondo
     }
 
-    override method image() { //Falta el fondo del nivel 3
+    override method image() { 
         return "fondoNivel3.png"
     }
 
@@ -149,7 +155,7 @@ object nivel3 inherits Nivel {
     }
 
     override method actualizarNivel() {
-        super()//No sé si esto deberia ser, termino la parte de metas y lo evaluo
+        super()
         return finDelJuego
     }
 
@@ -160,6 +166,10 @@ object nivel3 inherits Nivel {
 
     override method meta() {
         return metaNivel3
+    }
+
+    override method agregarPersonaje() {
+        personaje.position(game.at(12, 1)) 
     }
 }
 
@@ -176,7 +186,7 @@ class Meta inherits Colisionable{
     
     method image() = "meta.png" 
 
-    /*
+    /* RESUELTO
     Implementar la colision en Jacinta unicamente, "chocar" los que no tengan colision no hacen nada, los que si "interactuarCon"
     Hay una clase colisionables: Meta, Lobi, Pampeano al "chocar" deben usar "interactuarCon"
     En todos los objetos visuales que puedan conlisionar con Jacinta deben entender el mensaje "chocar"
