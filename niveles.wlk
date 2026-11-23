@@ -142,6 +142,7 @@ object nivel2 inherits Nivel { // campo con caminos
 object nivel3 inherits Nivel {
     override method activarNivel() {
         game.sound("audioNivel3.mp3").play()
+        personaje.restaurarEstado()
     }
 
     override method image() { 

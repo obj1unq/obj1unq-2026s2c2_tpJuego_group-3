@@ -14,12 +14,12 @@ object jacinta inherits Visual {
   var últimaDirección = abajo
   var property estadoMovimiento = normal
 
-  var property tieneFacon = false // cambiar por estado de imagen
+  var property tieneFacon = false 
 
   var property perdio = false
 
-  method image() { // VER ESTO 
-    return if (tieneFacon) "jacintaConFacon.png" else "jacinta.png"
+  method image() { 
+    return últimaDirección.imagenPersonaje( tieneFacon )
   }
 
   method ingredientes() = morral.ingredientes()
@@ -36,6 +36,7 @@ object jacinta inherits Visual {
     }
   }
 
+  // MATE - VIDA
   method recibirVidaExtra() {         
     vida += 1
     vidas.actualizar(vida)
@@ -53,14 +54,35 @@ object jacinta inherits Visual {
 
   method validarTomarMate(){   
     if (not mate.puedeUsarse()){
-      self.error("¡Me quedé sin agua che!") // ¡No tengo más vidas disponibles!
+      self.error( "¡Me quedé sin agua che!" ) // ¡No tengo más vidas disponibles!
     }
   }
 
   method validarCantidadVidas(){
     if ( vida >= 3 ) {
-      self.error("No estoy para tomar mate!") // No necesito tomar mate, ya tengo todas mis vidas!
+      self.error( "No necesito tomar mate" )
     }
+  }
+
+  method recargarMate() {
+    if (lago.contiene(position)) {
+        if (mate.puedeUsarse()) {
+            game.say( self, "Ya tengo suficiente agua en el mate, no necesito recargarlo" )
+        } else {
+            mate.recargar()
+            game.say( self, "¡Ya tengo agua para el mate!" )
+        }
+    } else {
+        game.say( self, "Tengo que acercarme al lago para recargar el mate" )
+    }
+  }
+
+  method reiniciarEstado() {
+    vida = 3
+    position = game.origin()
+    perdio = false
+    vidas.actualizar(vida)
+    ingredientes.vaciarMorral()
   }
 
   method mover(dirección) {
@@ -87,7 +109,7 @@ object jacinta inherits Visual {
   }
 
   method arbustoEn(posicion) {
-    return self.arbustosEn(posicion).anyOne() // documentacion wollok: Answers any element of a non-empty collection
+    return self.arbustosEn(posicion).anyOne()
   }
 
   method arbustosEn(posicion) {
@@ -131,25 +153,10 @@ object jacinta inherits Visual {
     game.schedule( 800, { tieneFacon = false } )
   }
 
-  method recargarMate() {
-    if (lago.contiene(position)) {
-        if (mate.puedeUsarse()) {
-            game.say( self, "Ya tengo suficiente agua en el mate, no necesito recargarlo" )
-        } else {
-            mate.recargar()
-            game.say( self, "¡Ya tengo agua para el mate!" )
-        }
-    } else {
-        game.say( self, "Tengo que acercarme al lago para recargar el mate" )
-    }
-  }
-
-  method reiniciarEstado() {
-    vida = 3
-    position = game.origin()
-    perdio = false
-    vidas.actualizar(vida)
-    ingredientes.vaciarMorral()
+  // PARA NIVEL 3
+  method restaurarEstado() {
+    estadoMovimiento = normal
+    tieneFacon = false
   }
 
 }
