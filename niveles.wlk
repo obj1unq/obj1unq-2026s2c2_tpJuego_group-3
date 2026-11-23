@@ -9,7 +9,7 @@ import nivelManager.*
 import configuraciones.*
 import colision-y-clases.*
 
-class Nivel inherits Visual{
+class Nivel inherits Visual {
     var property personaje = jacinta
     var property position = game.origin()
 
@@ -141,7 +141,7 @@ object nivel2 inherits Nivel { // campo con caminos
 
 object nivel3 inherits Nivel {
     override method activarNivel() {
-        //aca irian todas las visuales y sonidos del nivel tres, no el fondo
+        game.sound("audioNivel3.mp3").play()
     }
 
     override method image() { 

@@ -5,10 +5,9 @@ import colision-y-clases.*
 
 // NIVEL 1
 class Arbusto inherits Visual{
-    // tiene tres situaciones: puede estar vacio, tener un ingrediente o puede aparecer una yarará.
     var property position
-    var property tipo // tipoArbusto: con hojas o flores
-    var property contenido = null// yarará, vacío o ingrediente (por ahora son 4), se setean despues del new
+    var property tipo 
+    var property contenido = null // yarará, vacío o ingrediente, se setean despues del new
 
     method image() {
       return "arbusto-" + tipo.cuerpo() + ".png"
@@ -49,7 +48,7 @@ object pampero inherits Colisionable{
   method image() = "pampero.png"
 
   override method interactuarCon(personaje) {
-    // se podria agregar audio de viento fuerte
+    game.sound("audioPampero.mp3").play()
     game.say( personaje, "¡Ay virgencita! ¡Se me dio vuelta el mundo!" )
     personaje.marearse()
     self.aparecerEnUnLugarAleatorio()

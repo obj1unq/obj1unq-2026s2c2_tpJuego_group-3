@@ -1,10 +1,5 @@
-# Nombre del juego ( "La Odisea de Jacinta”? )
+# La Odisea de Jacinta
 Doña Jacinta es una chinita[^1] de la pampa bonaerense que tiene la tarea de cocinar el locro para la peña patria de su pueblo. 
-
-## DEMO
-Para el nivel 1 vamos a implementar tres arbustos, uno con un ingrediente necesario para el locro, otro con una yarará que hace daño al personaje, otro vacío. 
-El personaje comienza con un slot vacío (sin ingredientes). A su vez también está equipada con un unico mate que le recarga la vida.
-Hay una meta de entrada/salida.
 
 ## Equipo de desarrollo
 - Arenas, Valentina.
@@ -23,37 +18,38 @@ Hay una meta de entrada/salida.
 
 - b: buscar ingrediente en el pastizal.
 - t: toma mate y recarga vida.
+- f: usar facón (defenderse).
+- r: recargar mate.
 
-- f: usar facón ?
-
-### Primer nivel:
+## Primer nivel:
 Jacinta tiene que recorrer el campo buscando los ingredientes necesarios para cocinar el locro. Sin embargo, debe tener cuidado: una yarará se encuentra entre los pastizales.
 
-### Objetos con los que el personaje colisiona:
+### Objetos con los que el personaje interactúa o colisiona:
 - Pastizal: surgen tres situaciones random:
-    - La primera puede ser que el pastizal contenga alguno de los cuatro ingredientes recolectables necesarios para el locro, lo cual hace que se sumen al inventario.
-    - La segunda puede ser que el pastizal esté vacío.
-    - La tercera puede ser que entre el pastizal esté escondida la yarará (enemiga).
+    - El pastizal contiene alguno de los tres ingredientes recolectables necesarios para el locro, lo cual hace que se sumen al inventario.
+    - El pastizal está vacío.
+    - En el pastizal está escondida una yarará.
 
-- Yarará[^2] (enemiga): se camufla entre los pastizales, es venenosa por lo que al colisionar con Jacinta le resta vida (otro efecto posible: emite una advertencia o la empuja un casillero hacia atrás).
+- Yarará[^2] (enemiga): se camufla entre los pastizales, es venenosa por lo que al interactuar con Jacinta le resta vida y la empuja un casillero hacia atrás.
 
-### Segundo nivel:
+## Segundo nivel:
 Jacinta tiene que vencer al lobizón y esquivar al pampero para llegar al pueblo.
 
-### Objetos con los que el personaje colisiona:
-- Lobizón[^3] (enemigo): al colisionar con Jacinta le resta una cantidad considerable de vida. (esta situación requiere un método ya sea de combate o ahuyento por ej. jacinta puede usar un facón para defenserse).
+### Objetos con los que el personaje interactúa o colisiona:
+- Lobizón[^3] (enemigo): al colisionar con Jacinta le resta vida. Esta situación requiere un método de defensa: jacinta  usa un facón para ello.
+
 - Pampero[^4] (obstáculo): al colisionar con Jacinta hace que se maree y se inviertan temporalmente los controles de movimiento (la tecla de arriba va hacia abajo y viceversa, la tecla izquierda va hacia derecha y viceversa).
 
-### Tercer nivel:
-Jacinta tiene que atravesar la pista de baile esquivando a las parejas que bailan chacarera. Tiene que llegar hasta la cocina para llevar el locro. Si consigue llegar, gana.
+## Tercer nivel:
+Jacinta tiene que atravesar la pista de baile esquivando a las parejas que bailan chacarera. Tiene que llegar hasta la cocina para cocinar el locro. Si consigue llegar, gana.
 
-### Objetos con los que el personaje colisiona:
-- Parejas de baile (obstáculo): se mueven en patrones fijos (ver como hacemos para que simule el ritmo de baile). Si colisionan con ella, le hacen tirar parte del locro (o quizas es mejor que la demoren haciéndola retroceder).
+### Objetos con los que el personaje interactúa o colisiona:
+- Parejas de baile (obstáculo): se mueven en patrones fijos. Si colisionan con ella, le hacen tirar los ingredientes para el locro.
 
 ## Otros
 - Programación con Objetos I - Universidad Nacional de Quilmes
 - Versión de wollok: 4.0.0
-- Una vez terminado, no tenemos problemas en que el repositorio sea público / queremos manternerlo privado
+- Una vez terminado, no tenemos problemas en que el repositorio sea público.
 
 ## Notas
 

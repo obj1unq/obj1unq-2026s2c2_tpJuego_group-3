@@ -38,4 +38,3 @@ object morral {
         ingredientes.remove(ingrediente)
     }
 }
-

@@ -6,12 +6,12 @@ import inventario.*
 import vidas-y-mate.*
 import nivelManager.*
 
-object jacinta inherits Visual{
+object jacinta inherits Visual {
   var property position = game.origin()
   var property ingredientes = morral 
   var property vida = 3        // check
 
-  var últimaDirección = abajo // puse abajo por poner una x defecto xk no me deja dejarlo vacio
+  var últimaDirección = abajo
   var property estadoMovimiento = normal
 
   var property tieneFacon = false // cambiar por estado de imagen
@@ -156,17 +156,13 @@ object jacinta inherits Visual{
 
 // ESTADOS DE MOVIMIENTO JACINTA
 object mareada {
-
   method moverseHacia(dirección, personaje) {
     return dirección.opuesta().siguiente(personaje.position())
   }
-
 }
 
 object normal {
-
   method moverseHacia(dirección, personaje) {
     return dirección.siguiente(personaje.position())
   }
-
-}
+} 
