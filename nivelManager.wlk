@@ -10,7 +10,7 @@ import vidas-y-mate.*
 object nivelManager {
     var nivelActual = nivel1
 
-   method iniciarNivel() {
+    method iniciarNivel() {
         game.addVisual(nivelActual)
 
         nivelActual.activarNivel()
@@ -32,7 +32,7 @@ object nivelManager {
         game.onCollideDo(jacinta, {objeto => objeto.chocar(jacinta)})
     }
 
-    method actualizarNivel(){
+    method actualizarNivel() {
         nivelActual.validarFinal()
         game.clear()
 
@@ -56,4 +56,3 @@ object nivelManager {
         jacinta.reiniciarEstado()
     }
 }
-

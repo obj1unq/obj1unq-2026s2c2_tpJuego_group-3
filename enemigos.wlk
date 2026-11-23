@@ -1,6 +1,7 @@
 import personaje.*
 import colision-y-clases.*
 
+// NIVEL 1
 class Yarará inherits Colisionable {
     var property arbusto
 
@@ -19,6 +20,7 @@ class Yarará inherits Colisionable {
     }
 }
 
+// NIVEL 2
 object lobizón inherits Colisionable{
     var property position = game.at(20, 20)
     const nombreTick = "movimientoLobizon"

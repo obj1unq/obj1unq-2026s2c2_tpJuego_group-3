@@ -44,7 +44,7 @@ object factoryArbustos{
             constructorYarara, constructorYarara, constructorVacio, constructorCebolla, constructorCalabaza, constructorChoclo, constructorPapa, constructorVacio, constructorYarara, constructorVacio, constructorYarara, constructorVacio
         ]
 
-        //const posibleContenidoMezclado = contenido.randomized() // documentacion wollok: Answers a new list of the same type and with the same content in a random order
+        //const posibleContenidoMezclado = contenido.randomized() 
 
         contenidos.forEach( { contenido => 
             const arbusto = new Arbusto( 

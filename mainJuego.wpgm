@@ -11,6 +11,7 @@ import niveles.*
 
 program Jacinta {
 	config.configurarEscenario()
+	
 	nivelManager.iniciarNivel()
 
 	game.start()
