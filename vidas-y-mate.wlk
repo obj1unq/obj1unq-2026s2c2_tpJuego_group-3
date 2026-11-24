@@ -82,6 +82,3 @@ object lago {
                position.y().between(14, 19)
     }
 }
-
-
-

@@ -51,7 +51,7 @@ object factoryArbustos{
                     position = generadorDeAleatoriedad.posicionAleatoria(),
                     tipo = generadorDeAleatoriedad.tipoArbustoAleatorio()
                 )
-                arbusto.contenido(contenido.construir(arbusto)) //correccion del profe
+                arbusto.contenido( contenido.construir(arbusto) ) 
                 game.addVisual(arbusto)
             }
         )

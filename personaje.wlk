@@ -9,7 +9,7 @@ import nivelManager.*
 object jacinta inherits Visual {
   var property position = game.origin()
   var property ingredientes = morral 
-  var property vida = 3        // check
+  var property vida = 3
 
   var últimaDirección = abajo
   var property estadoMovimiento = normal
@@ -100,7 +100,7 @@ object jacinta inherits Visual {
 
   method validarBuscarEn(posicion) {
     if ( not self.hayArbustoEn(posicion) ){
-      self.error("No hay nada en este lugar")
+      self.error( "No hay nada acá" )
     }
   }
 
@@ -145,7 +145,7 @@ object jacinta inherits Visual {
   // NIVEL 2 - LOBIZON
   method ahuyentar() {
     tieneFacon = true
-    game.say( self, "Tomá" )
+    game.say( self, "Tomá, bicho" )
     self.guardarFacon()
   }
 
@@ -158,7 +158,6 @@ object jacinta inherits Visual {
     estadoMovimiento = normal
     tieneFacon = false
   }
-
 }
 
 // ESTADOS DE MOVIMIENTO JACINTA
