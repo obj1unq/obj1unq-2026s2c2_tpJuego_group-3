@@ -143,6 +143,7 @@ object nivel3 inherits Nivel {
     override method activarNivel() {
         game.sound("audioNivel3.mp3").play()
         personaje.restaurarEstado()
+        game.addVisual(mate)
     }
 
     override method image() { 
