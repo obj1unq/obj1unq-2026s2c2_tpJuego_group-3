@@ -44,26 +44,58 @@ object vidas {
 object mate {
     var property position = game.at(5, 24)
     
-    var property disponible = true
+    var property estado = cargado
 
     method puedeUsarse() {
-        return disponible
+        return estado.sePuedeUsar()
     }
 
     method usar() {
-        disponible = false
+        estado = descargado
     }
 
     method image() {
-        return "mate.png"
+        return estado.imagen()
     }
 
 
     method recargar() {
-        disponible = true
+        estado = cargado
     }
 
 }
+
+
+
+object cargado {
+
+    const sePuedeUsar = true
+
+    method imagen(){
+        return "mate.png"
+    }
+
+    method sePuedeUsar(){
+        return sePuedeUsar
+    }
+}
+
+
+
+object descargado {
+
+    const sePuedeUsar = false
+
+    method imagen(){
+        return "mate-inactivo.png"
+    }
+
+    method sePuedeUsar(){
+        return sePuedeUsar
+    }
+}
+
+
 
 object lago {
     var property activo = false
