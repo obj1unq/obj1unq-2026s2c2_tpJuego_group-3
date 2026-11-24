@@ -48,7 +48,7 @@ Jacinta tiene que atravesar la pista de baile esquivando a las parejas que baila
 
 ## Otros
 - Programación con Objetos I - Universidad Nacional de Quilmes
-- Versión de wollok: 4.0.0
+- Versión de wollok: 4.3.0
 - Una vez terminado, no tenemos problemas en que el repositorio sea público.
 
 ## Notas

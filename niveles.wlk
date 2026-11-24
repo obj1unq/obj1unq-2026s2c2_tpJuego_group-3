@@ -52,7 +52,7 @@ object nivel1 inherits Nivel { // pastizal
 
     override method validarFinal(){
         if(morral.cantidadIngredientes() < 3) {
-            self.error("No tengo todos los ingredientes para irme")
+            self.error( "Me faltan ingredientes" )
         }
     }
 
@@ -139,7 +139,7 @@ object nivel2 inherits Nivel { // campo con caminos
     }
 }
 
-object nivel3 inherits Nivel {
+object nivel3 inherits Nivel { // peña
     override method activarNivel() {
         game.sound("audioNivel3.mp3").play()
         personaje.restaurarEstado()
@@ -151,7 +151,7 @@ object nivel3 inherits Nivel {
 
     override method validarFinal(){
         if(personaje.vida() <= 0){  //Me falta definir la condicion del nivel 3
-            self.error("Tengo que llegar al pueblo sano y salvo")
+            self.error("Tengo que llegar al pueblo sana y salva")
         }
     }
 
@@ -178,7 +178,7 @@ object finDelJuego {
     var property position = game.origin()
 
     method image() {
-        return "finDelJuego.jpg"//Falta una pantalla de fin del juego
+        return "gameWin.png"
     }
 }
 
@@ -210,4 +210,3 @@ object metaNivel3 inherits Meta {
     override method position() = game.at(13, game.origin().y())
     override method image() = "meta2.png"
 }
-
