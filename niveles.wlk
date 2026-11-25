@@ -8,6 +8,7 @@ import vidas-y-mate.*
 import nivelManager.*
 import configuraciones.*
 import colision-y-clases.*
+import mapaNivel2.*
 
 class Nivel inherits Visual {
     var property personaje = jacinta
@@ -77,6 +78,8 @@ object nivel1 inherits Nivel { // pastizal
 object nivel2 inherits Nivel { // campo con caminos
     override method activarNivel() {
 
+        mapaNivel2.configurar()
+
         lago.desactivar()
 
         game.addVisual(mate)
@@ -130,8 +133,10 @@ object nivel2 inherits Nivel { // campo con caminos
 
     override method remover(){
         super()
+        mapaNivel2.desactivar()
         game.removeTickEvent("movimientoPampero")
         game.removeTickEvent("movimientoLobizon")
+        
     }
 
     override method agregarPersonaje() {
@@ -141,6 +146,7 @@ object nivel2 inherits Nivel { // campo con caminos
 
 object nivel3 inherits Nivel { // peña
     override method activarNivel() {
+        mapaNivel2.desactivar()
         game.sound("audioNivel3.mp3").play()
         personaje.restaurarEstado()
         game.addVisual(mate)
