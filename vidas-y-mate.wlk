@@ -46,6 +46,10 @@ object mate {
     
     var property estado = cargado
 
+    method image() {
+        return estado.imagen()
+    }
+
     method puedeUsarse() {
         return estado.sePuedeUsar()
     }
@@ -54,48 +58,44 @@ object mate {
         estado = descargado
     }
 
-    method image() {
-        return estado.imagen()
-    }
-
 
     method recargar() {
         estado = cargado
     }
 
+    method intentarRecargar(personaje) {
+        estado.intentarRecargar(self, personaje)
+    }
 }
 
-
-
 object cargado {
-
-    const sePuedeUsar = true
-
     method imagen(){
         return "mate.png"
     }
 
     method sePuedeUsar(){
-        return sePuedeUsar
+        return true
+    }
+
+    method intentarRecargar(mate, personaje) {
+        game.say( personaje, "No necesito recargar el mate" )
     }
 }
 
-
-
 object descargado {
-
-    const sePuedeUsar = false
-
     method imagen(){
         return "mate-inactivo.png"
     }
 
     method sePuedeUsar(){
-        return sePuedeUsar
+        return false
+    }
+
+    method intentarRecargar(mate, personaje) {
+        mate.recargar()
+        game.say( personaje, "¡Ya tengo agua para el mate!" )
     }
 }
-
-
 
 object lago {
     var property activo = false

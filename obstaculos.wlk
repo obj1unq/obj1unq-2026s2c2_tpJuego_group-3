@@ -2,6 +2,7 @@ import wollok.game.*
 import personaje.*
 import factory.*
 import colision-y-clases.*
+import ingredientes.*
 
 // NIVEL 1
 class Arbusto inherits Visual{
@@ -13,12 +14,19 @@ class Arbusto inherits Visual{
       return "arbusto-" + tipo.cuerpo() + ".png"
     }
 
-    method serInspeccionado() {
+    method serInspeccionadoPor(personaje) {
+      self.marcarComoBuscado()
+      contenido.interactuarCon(personaje)
+    }
+
+    method marcarComoBuscado() {
       tipo.estado("buscado")
     }
 
-    method esUnArbusto() {
-      return true
+    method esUnArbusto() = true
+
+    method marcarIngredienteRecolectado() {
+      contenido = new Recolectado( arbusto = self )
     }
 }
 
@@ -34,7 +42,7 @@ class TipoArbusto {
 class Vacío {
   var property arbusto
 
-  method position() {return arbusto.position()}
+  method position() = arbusto.position()
 
   method interactuarCon(personaje) {
     game.say( personaje, "¡Qué lástima che! acá solo hay yuyo" )
