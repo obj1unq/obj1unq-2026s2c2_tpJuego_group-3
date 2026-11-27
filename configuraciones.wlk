@@ -21,8 +21,8 @@ object config {
 
     	keyboard.t().onPressDo( { jacinta.tomarMate() } )     
     	keyboard.b().onPressDo( { jacinta.buscarEn( jacinta.position() ) } )
-		keyboard.f().onPressDo( { jacinta.ahuyentar() } )
-    	keyboard.r().onPressDo( { jacinta.recargarMate() } )
+		keyboard.f().onPressDo( { jacinta.intentarAhuyentar() } )
+    	keyboard.r().onPressDo( { jacinta.intentarRecargarMate() } )
 	}
 
 	method inventario() {

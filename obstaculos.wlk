@@ -14,7 +14,7 @@ class Arbusto inherits Visual{
     }
 
     method serInspeccionado() {
-      tipo.estado("buscado")
+      tipo.estado("buscado") // agregar efecto buscado
     }
 
     method esUnArbusto() {
