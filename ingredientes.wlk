@@ -13,6 +13,7 @@ class Ingrediente {
         morral.agregarIngrediente(self)
         game.sound("audioItemPickUp.mp3").play()
         game.say( personaje, "¡Genial! encontré " + self.nombre() )
+        arbusto.marcarIngredienteRecolectado()
     }
 }
 
@@ -38,4 +39,14 @@ class Choclo inherits Ingrediente {
     override method image() = "choclo.png"
 
     override method nombre() = "choclo"
+}
+
+class Recolectado {
+    var property arbusto
+
+    method position() = arbusto.position() 
+
+    method interactuarCon(personaje) {
+        game.say( personaje, "Ya recolecté el ingrediente" )
+    }
 }
