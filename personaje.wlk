@@ -21,15 +21,13 @@ object jacinta inherits Visual {
 
   var property tieneFacon = false 
 
-  var property perdio = false
-
   method image() { 
     return últimaDirección.imagenPersonaje( tieneFacon )
   }
 
   method mover(dirección) {
     últimaDirección = dirección
-    if ( not perdio ) {             
+    if ( not self.perdio() ) {             
       position = estadoMovimiento.moverseHacia(dirección, self) 
     } 
   }
@@ -37,15 +35,16 @@ object jacinta inherits Visual {
   method ingredientes() = morral.ingredientes()
 
   method ataqueDeEnemigo() {
-    if (not perdio) {
-      vida -= 1
+      vida = (vida - 1).max(0)
       vidas.actualizar(vida)
 
-      if (vida == 0) {
-        perdio = true
-        nivelManager.reiniciarNivel()
-      }
+    if (self.perdio()) {
+      nivelManager.reiniciarNivel()
     }
+  }
+
+  method perdio() {
+    return vida <= 0
   }
 
   // MATE - VIDA
@@ -55,7 +54,7 @@ object jacinta inherits Visual {
   }
 
   method tomarMate() {
-    if (not perdio) {
+    if (not self.perdio()) {
       self.validarTomarMate()
       self.validarCantidadVidas()
       self.recibirVidaExtra()
@@ -77,7 +76,7 @@ object jacinta inherits Visual {
   }
 
   method intentarRecargarMate() {
-    if ( not perdio ) {
+    if ( not self.perdio() ) {
       nivelActual.recargarMate()
     }
   }
@@ -97,7 +96,6 @@ object jacinta inherits Visual {
   method reiniciarEstado() {
     vida = 3
     position = game.origin()
-    perdio = false
     vidas.actualizar(vida)
     ingredientes.vaciarMorral()
   }
@@ -155,7 +153,7 @@ object jacinta inherits Visual {
 
   // NIVEL 2 - LOBIZON
   method intentarAhuyentar() {
-    if ( not perdio ) {
+    if ( not self.perdio() ) {
       nivelActual.ahuyentar()
     }
   }
