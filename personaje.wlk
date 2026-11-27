@@ -35,10 +35,10 @@ object jacinta inherits Visual {
   method ingredientes() = morral.ingredientes()
 
   method ataqueDeEnemigo() {
-      vida = (vida - 1).max(0)
-      vidas.actualizar(vida)
+    vida = (vida - 1).max(0)
+    vidas.actualizar(vida)
 
-    if (self.perdio()) {
+    if ( self.perdio() ) {
       nivelManager.reiniciarNivel()
     }
   }
@@ -54,7 +54,7 @@ object jacinta inherits Visual {
   }
 
   method tomarMate() {
-    if (not self.perdio()) {
+    if ( not self.perdio() ) {
       self.validarTomarMate()
       self.validarCantidadVidas()
       self.recibirVidaExtra()
@@ -103,7 +103,7 @@ object jacinta inherits Visual {
 
   // NIVEL 1 - ARBUSTOS
   method intentarBuscarEn(posicion) {
-    if ( not perdio ) {
+    if ( not self.perdio() ) {
       nivelActual.buscarEn(posicion)
     }
   }

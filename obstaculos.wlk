@@ -23,9 +23,7 @@ class Arbusto inherits Visual{
       tipo.estado("buscado")
     }
 
-    method esUnArbusto() {
-      return true
-    }
+    method esUnArbusto() = true
 
     method marcarIngredienteRecolectado() {
       contenido = new Recolectado( arbusto = self )
@@ -44,7 +42,7 @@ class TipoArbusto {
 class Vacío {
   var property arbusto
 
-  method position() { return arbusto.position() }
+  method position() = arbusto.position()
 
   method interactuarCon(personaje) {
     game.say( personaje, "¡Qué lástima che! acá solo hay yuyo" )
