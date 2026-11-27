@@ -104,6 +104,12 @@ object jacinta inherits Visual {
 
 
   // NIVEL 1 - ARBUSTOS
+  method intentarBuscarEn(posicion) {
+    if ( not perdio ) {
+      nivelActual.buscarEn(posicion)
+    }
+  }
+
   method buscarEn(posicion) {
     self.validarBuscarEn(posicion)
     self.inspeccionarEn(posicion)
@@ -128,13 +134,12 @@ object jacinta inherits Visual {
   }
 
   method esArbustoVálidoParaBuscar(elemento) {
-    return elemento != self and elemento.esUnArbusto() // agregar validacion mas para arbusto buscado
+    return elemento != self and elemento.esUnArbusto() 
   }
   
   method inspeccionarEn(posicion) {
     const arbusto = self.arbustoEn(posicion)
-    arbusto.serInspeccionado()
-    arbusto.contenido().interactuarCon(self)
+    arbusto.serInspeccionadoPor(self)
   }
 
   method serEmpujada(){

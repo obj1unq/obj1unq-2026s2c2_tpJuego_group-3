@@ -37,6 +37,8 @@ class Nivel inherits Visual {
 
     method agregarPersonaje()
 
+    method buscarEn(posicion) { } // para el uso de la tecla b
+
     method ahuyentar() { } // para el uso de tecla f
 
     method recargarMate() { } // para el uso de tecla r
@@ -75,6 +77,10 @@ object nivel1 inherits Nivel { // pastizal
 
     override method agregarPersonaje() {
         personaje.position(game.origin()) 
+    }
+
+    override method buscarEn(posicion) {
+        personaje.buscarEn(posicion)
     }
 }
 
@@ -177,6 +183,10 @@ object nivel3 inherits Nivel { // peña
     override method agregarPersonaje() {
         personaje.position(game.at(12, 1)) 
     }
+
+    //override method buscarEn(posicion) {
+    //    personaje.buscarEn(posicion)
+    //}
 }
 
 object finDelJuego {
