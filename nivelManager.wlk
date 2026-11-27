@@ -10,7 +10,11 @@ import vidas-y-mate.*
 object nivelManager {
     var nivelActual = nivel1
 
+    method nivelActual() = nivelActual
+
     method iniciarNivel() {
+        jacinta.nivelActual(nivelActual)
+
         game.addVisual(nivelActual)
 
         nivelActual.activarNivel()

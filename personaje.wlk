@@ -7,11 +7,16 @@ import vidas-y-mate.*
 import nivelManager.*
 
 object jacinta inherits Visual {
+  var property nivelActual = nivelManager.nivelActual()
+
   var property position = game.origin()
+
   var property ingredientes = morral 
+
   var property vida = 3
 
   var últimaDirección = abajo
+
   var property estadoMovimiento = normal
 
   var property tieneFacon = false 
@@ -20,6 +25,13 @@ object jacinta inherits Visual {
 
   method image() { 
     return últimaDirección.imagenPersonaje( tieneFacon )
+  }
+
+  method mover(dirección) {
+    últimaDirección = dirección
+    if ( not perdio ) {             
+      position = estadoMovimiento.moverseHacia(dirección, self) 
+    } 
   }
 
   method ingredientes() = morral.ingredientes()
@@ -44,37 +56,42 @@ object jacinta inherits Visual {
 
   method tomarMate() {
     if (not perdio) {
-        self.validarTomarMate()
-        self.validarCantidadVidas()
-        self.recibirVidaExtra()
-        mate.usar()
-        game.say(self, "¡El mate me revive!")
+      self.validarTomarMate()
+      self.validarCantidadVidas()
+      self.recibirVidaExtra()
+      mate.usar()
+      game.say(self, "¡El mate me revive!" )
     }
   }
 
   method validarTomarMate(){   
-    if (not mate.puedeUsarse()){
-      self.error( "¡Me quedé sin agua che!" ) // ¡No tengo más vidas disponibles!
+    if ( not mate.puedeUsarse() ) {
+      self.error( "¡Se me terminaron los mates che!" )
     }
   }
 
-  method validarCantidadVidas(){
+  method validarCantidadVidas() {
     if ( vida >= 3 ) {
       self.error( "No necesito tomar mate" )
     }
   }
 
-  method recargarMate() {
-    if (lago.contiene(position)) {
-        if (mate.puedeUsarse()) {
-            game.say( self, "Ya tengo suficiente agua en el mate, no necesito recargarlo" )
-        } else {
-            mate.recargar()
-            game.say( self, "¡Ya tengo agua para el mate!" )
-        }
+  method intentarRecargarMate() {
+    if ( not perdio ) {
+      nivelActual.recargarMate()
+    }
+  }
+
+  method recargarMate() {       
+    if ( self.estáEnElLago() ) {
+      mate.intentarRecargar(self)
     } else {
         game.say( self, "Tengo que acercarme al lago para recargar el mate" )
     }
+  }
+
+  method estáEnElLago() {
+    return lago.contiene(position)
   }
 
   method reiniciarEstado() {
@@ -85,12 +102,6 @@ object jacinta inherits Visual {
     ingredientes.vaciarMorral()
   }
 
-  method mover(dirección) {
-    últimaDirección = dirección
-    if ( not perdio ) {             
-      position = estadoMovimiento.moverseHacia(dirección, self) 
-    } 
-  }
 
   // NIVEL 1 - ARBUSTOS
   method buscarEn(posicion) {
@@ -117,7 +128,7 @@ object jacinta inherits Visual {
   }
 
   method esArbustoVálidoParaBuscar(elemento) {
-    return elemento != self and elemento.esUnArbusto() 
+    return elemento != self and elemento.esUnArbusto() // agregar validacion mas para arbusto buscado
   }
   
   method inspeccionarEn(posicion) {
@@ -139,11 +150,17 @@ object jacinta inherits Visual {
 
   method volverALaNormalidad() {
     estadoMovimiento = normal
-    game.say( self, "Ya está, se me pasó el mareo" )
+    game.say( self, "Se me pasó el mareo" )
   }
 
   // NIVEL 2 - LOBIZON
-  method ahuyentar() {
+  method intentarAhuyentar() {
+    if ( not perdio ) {
+      nivelActual.ahuyentar()
+    }
+  }
+
+  method usarFacon() {
     tieneFacon = true
     game.say( self, "Tomá, bicho" )
     self.guardarFacon()

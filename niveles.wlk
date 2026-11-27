@@ -36,6 +36,10 @@ class Nivel inherits Visual {
     method meta()
 
     method agregarPersonaje()
+
+    method ahuyentar() { } // para el uso de tecla f
+
+    method recargarMate() { } // para el uso de tecla r
 }
 
 object nivel1 inherits Nivel { // pastizal
@@ -81,14 +85,11 @@ object nivel2 inherits Nivel { // campo con caminos
 
         game.addVisual(mate)
 
-
         game.addVisual(pampero)
 
         self.persecuciónAPersonaje()
 
         game.addVisual(lobizón)
-
-        self.colisionesDelNivel()
 
         super() 
 
@@ -99,11 +100,6 @@ object nivel2 inherits Nivel { // campo con caminos
         game.onTick( 1000, "movimientoPampero", { pampero.perseguirPersonaje() } )
         game.onTick( 1600, "movimientoLobizon", { lobizón.perseguirPersonaje() } )
     }
-
-    method colisionesDelNivel() {
-        game.onCollideDo( jacinta, { objeto => objeto.interactuarCon(jacinta) })
-    }
-
 
     override method image() {
         return "fondoNivel2.jpeg"
@@ -136,6 +132,14 @@ object nivel2 inherits Nivel { // campo con caminos
 
     override method agregarPersonaje() {
         personaje.position(game.at(2, 21)) 
+    }
+
+    override method ahuyentar() {
+        personaje.usarFacon()
+    }
+
+    override method recargarMate() { 
+        personaje.recargarMate()
     }
 }
 
