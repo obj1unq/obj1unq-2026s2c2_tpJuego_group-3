@@ -19,9 +19,24 @@ object pareja2 inherits Visual {
 }
 //Hasta aca el codigo de prueba
 object nivelManager {
-    var nivelActual = nivel1
+    var property nivelActual = intro
+    //const nivelAnterior = nivelActual
 
-    method nivelActual() = nivelActual
+    //method nivelAnterior() = nivelAnterior
+
+    method iniciarIntro() {
+        config.teclasIntro()
+        game.addVisual(nivelActual)
+    }
+
+    method actualizarVisual() {
+        game.clear()
+        
+        const nivelAnterior = nivelActual
+        nivelActual = nivelAnterior.siguienteVisual()
+        
+        nivelActual.iniciar()
+    }
 
     method iniciarNivel() {
         jacinta.nivelActual(nivelActual)
@@ -42,8 +57,6 @@ object nivelManager {
 
         nivelActual.agregarPersonaje()
 
-        game.addVisual(personaje)
-
         game.onCollideDo(jacinta, {objeto => objeto.chocar(jacinta)})
 
         //Codigo de pruba, esto despues no va
@@ -58,7 +71,7 @@ object nivelManager {
         const nivelAnterior = nivelActual
         nivelActual = nivelAnterior.actualizarNivel()
         
-        self.iniciarNivel()
+        nivelActual.iniciar()
 
         vidas.reiniciar(jacinta.vida())
     }

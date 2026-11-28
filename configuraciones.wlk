@@ -1,3 +1,4 @@
+import nivelManager.*
 import wollok.game.*
 import personaje.*
 import direcciones.*
@@ -32,6 +33,10 @@ object config {
 		game.addVisual(slot1)
 		game.addVisual(slot2)
 		game.addVisual(slot3)
+	}
+
+	method teclasIntro() {
+		keyboard.space().onPressDo( {nivelManager.actualizarVisual()} )
 	}
 }
 
