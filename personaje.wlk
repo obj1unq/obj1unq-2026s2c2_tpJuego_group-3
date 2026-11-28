@@ -166,12 +166,12 @@ object jacinta inherits Visual {
 
   method usarFacon() {
     tieneFacon = true
-    game.say( self, "Tomá, bicho" )
+    game.say( self, "Tomá" )
     self.guardarFacon()
   }
 
   method guardarFacon() {
-    game.schedule( 800, { tieneFacon = false } )
+    game.schedule( 1000, { tieneFacon = false } )
   }
 
   // PARA NIVEL 3
