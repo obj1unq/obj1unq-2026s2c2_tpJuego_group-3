@@ -7,17 +7,6 @@ import configuraciones.*
 import factory.*
 import vidas-y-mate.*
 
-//Esta parte del codigo es de prueba, se debe borrar luego de implementar la clase y objetos correspondientes
-import colision-y-clases.*
-object pareja1 inherits Visual {
-    method position() = game.at( 1, 5)
-    method image() = "pareja_intento_1.gif"
-}
-object pareja2 inherits Visual {
-    method position() = game.at(1, 7)
-    method image() = "pareja_intento_2.gif"
-}
-//Hasta aca el codigo de prueba
 object nivelManager {
     var nivelActual = nivel1
 
@@ -44,11 +33,7 @@ object nivelManager {
 
         game.addVisual(personaje)
 
-        game.onCollideDo(jacinta, {objeto => objeto.chocar(jacinta)})
-
-        //Codigo de pruba, esto despues no va
-        game.addVisual(pareja1)
-        game.addVisual(pareja2)
+        game.onCollideDo(jacinta, { objeto => objeto.chocar(jacinta)} )
     }
 
     method actualizarNivel() {

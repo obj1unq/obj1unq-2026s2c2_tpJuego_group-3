@@ -5,7 +5,7 @@ import colision-y-clases.*
 import ingredientes.*
 
 // NIVEL 1
-class Arbusto inherits Visual{
+class Arbusto inherits Visual {
     var property position
     var property tipo 
     var property contenido = null // yarará, vacío o ingrediente, se setean despues del new
@@ -50,9 +50,7 @@ class Vacío {
 }
 
 // NIVEL 2
-object pampero inherits Colisionable{
-  var property position = game.at(15,15)
-
+object pampero inherits Perseguidor( position = game.at(15,15) ) {
   method image() = "pampero.png"
 
   override method interactuarCon(personaje) {
@@ -65,18 +63,4 @@ object pampero inherits Colisionable{
   method aparecerEnUnLugarAleatorio() {
     position = generadorDeAleatoriedad.posicionAleatoria()
   }
-
-  method perseguirPersonaje() {
-    const objetivo = jacinta.position()
-    const nuevaPosicionX = ( position.x() + self.dirección( position.x(), objetivo.x()) ).max(0).min( game.width() - 1 )
-    const nuevaPosicionY = ( position.y() + self.dirección( position.y(), objetivo.y()) ).max(0).min( game.height() - 1 )
-    position = game.at(nuevaPosicionX, nuevaPosicionY)
-  }
-
-  method dirección(actual, objetivo) {
-    if (objetivo > actual) return 1
-    if (objetivo < actual) return -1
-    return 0
-  }
 }
-
