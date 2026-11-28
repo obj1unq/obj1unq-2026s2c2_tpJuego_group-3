@@ -62,6 +62,7 @@ object jacinta inherits Visual {
       self.recibirVidaExtra()
       mate.usar()
       game.say(self, "¡El mate me revive!" )
+      // game.sound("audioVidaExtra.mp3").play()
     }
   }
 
@@ -88,6 +89,7 @@ object jacinta inherits Visual {
       mate.intentarRecargar(self)
     } else {
         game.say( self, "Tengo que acercarme al lago para recargar el mate" )
+        game.sound("audioNoSePuede.mp3").play()
     }
   }
 

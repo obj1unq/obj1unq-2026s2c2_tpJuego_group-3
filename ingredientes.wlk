@@ -47,6 +47,7 @@ class Recolectado {
     method position() = arbusto.position() 
 
     method interactuarCon(personaje) {
+        game.sound("audioNoSePuede.mp3").play()
         game.say( personaje, "Ya recolecté el ingrediente" )
     }
 }

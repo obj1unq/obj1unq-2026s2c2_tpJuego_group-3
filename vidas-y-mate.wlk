@@ -56,6 +56,7 @@ object mate {
 
     method usar() {
         estado = descargado
+        game.sound("audioTomarMate.mp3").play()
     }
 
 
@@ -79,6 +80,7 @@ object cargado {
 
     method intentarRecargar(mate, personaje) {
         game.say( personaje, "No necesito recargar el mate" )
+        game.sound("audioNoSePuede.mp3").play()
     }
 }
 
@@ -93,6 +95,7 @@ object descargado {
 
     method intentarRecargar(mate, personaje) {
         mate.recargar()
+        game.sound("audioRecargarMate.mp3").play()
         game.say( personaje, "¡Ya tengo agua para el mate!" )
     }
 }
