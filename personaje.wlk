@@ -166,6 +166,7 @@ object jacinta inherits Visual {
 
   method usarFacon() {
     tieneFacon = true
+    game.sound("audioFacon.mp3").play()
     game.say( self, "Tomá" )
     self.guardarFacon()
   }

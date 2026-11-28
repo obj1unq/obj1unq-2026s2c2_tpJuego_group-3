@@ -45,6 +45,7 @@ class Vacío {
   method position() = arbusto.position()
 
   method interactuarCon(personaje) {
+    game.sound("audioHojas.mp3").play()
     game.say( personaje, "¡Qué lástima che! acá solo hay yuyo" )
   }
 }

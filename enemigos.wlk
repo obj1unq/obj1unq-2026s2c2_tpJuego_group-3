@@ -28,6 +28,7 @@ object lobizón inherits Perseguidor( position = game.at(20, 20) ) {
     method image() = "lobizon.png"
 
     override method interactuarCon(personaje) {
+        game.sound("audioLobizon.mp3").play()
         if ( personaje.tieneFacon() ) {
             game.say( self, "¡Grrggrrgrr!" )
             self.desaparecer()
