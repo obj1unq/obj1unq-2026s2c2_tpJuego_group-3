@@ -5,6 +5,7 @@ import obstaculos.*
 import inventario.*
 import vidas-y-mate.*
 import nivelManager.*
+import niveles.*
 
 object jacinta inherits Visual {
   var property nivelActual = nivelManager.nivelActual()
@@ -40,6 +41,7 @@ object jacinta inherits Visual {
 
     if ( self.perdio() ) {
       nivelManager.reiniciarNivel()
+      //nivelManager.nivelActual(gameOver)
     }
   }
 
@@ -95,7 +97,6 @@ object jacinta inherits Visual {
 
   method reiniciarEstado() {
     vida = 3
-    position = game.origin()
     vidas.actualizar(vida)
     ingredientes.vaciarMorral()
   }

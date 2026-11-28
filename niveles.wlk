@@ -14,8 +14,8 @@ class Nivel inherits Visual {
     var property position = game.origin()
 
     method activarNivel() {
-        game.sound("audioNivel1y2.mp3").play()
-        game.addVisual( self.meta() )
+        
+        game.addVisual(self.meta())
     }
 
     method image()
@@ -35,13 +35,19 @@ class Nivel inherits Visual {
 
     method meta()
 
-    method agregarPersonaje()
+    method agregarPersonaje() {
+        game.addVisual(personaje)
+    }
 
     method buscarEn(posicion) { } // para el uso de la tecla b
 
     method ahuyentar() { } // para el uso de tecla f
 
     method recargarMate() { } // para el uso de tecla r
+
+    method iniciar(){
+        nivelManager.iniciarNivel()
+    }
 }
 
 object nivel1 inherits Nivel { // pastizal
@@ -50,6 +56,7 @@ object nivel1 inherits Nivel { // pastizal
         game.addVisual(mate)
         config.inventario()
         super()
+        game.sound("audioNivel1y2.mp3").play()
     }
 
     override method image() {
@@ -76,11 +83,16 @@ object nivel1 inherits Nivel { // pastizal
     }
 
     override method agregarPersonaje() {
-        personaje.position( game.origin() ) 
+        personaje.position(game.origin()) 
+        super()
     }
 
     override method buscarEn(posicion) { // tecla b
         personaje.buscarEn(posicion)
+    }
+
+    override method iniciar() {
+        nivelManager.reiniciarNivel()
     }
 }
 
@@ -99,6 +111,7 @@ object nivel2 inherits Nivel { // campo con caminos
         super() 
 
         lago.activar()
+        game.sound("audioNivel1y2.mp3").play()
     }
 
     method persecuciónAPersonaje() {
@@ -136,7 +149,8 @@ object nivel2 inherits Nivel { // campo con caminos
     }
 
     override method agregarPersonaje() {
-        personaje.position( game.at(2, 21) ) 
+        personaje.position(game.at(2, 21)) 
+        super()
     }
 
     override method ahuyentar() { // tecla f
@@ -157,6 +171,7 @@ object nivel3 inherits Nivel { // peña
         personaje.restaurarEstado()
 
         game.addVisual(mate)
+        super()
 
         self.parejas()
     }
@@ -202,7 +217,8 @@ object nivel3 inherits Nivel { // peña
     }
 
     override method agregarPersonaje() {
-        personaje.position( game.at(12, 1) ) 
+        personaje.position(game.at(12, 1)) 
+        super()
     }
 
     override method ahuyentar() { // tecla f
@@ -215,6 +231,25 @@ object finDelJuego {
 
     method image() {
         return "gameWin.png"
+    }
+
+    method siguienteVisual() = creditos
+
+    method iniciar() {
+        nivelManager.iniciarIntro()
+    }
+}
+
+object creditos {
+    method position() = game.origin()
+    method image() = "creditos.png"
+
+    method siguienteVisual() {
+        return nivel1
+    }
+
+    method iniciar() {
+        nivelManager.iniciarIntro()
     }
 }
 
@@ -246,3 +281,22 @@ object metaNivel3 inherits Meta {
     override method position() = game.at(13, game.origin().y())
     override method image() = "meta2.png"
 }
+
+object intro {
+    method image() = "introJuego.png"
+    method position() = game.origin()
+    method siguienteVisual() = introControles
+    method iniciar() {
+        nivelManager.iniciarIntro()
+    }
+}
+
+object introControles {
+    method image() = "introControles.png"
+    method position() = game.origin()
+    method siguienteVisual() = nivel1
+    method iniciar() {
+        nivelManager.iniciarIntro()
+    }
+}
+
